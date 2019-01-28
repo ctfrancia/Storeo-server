@@ -1,0 +1,25 @@
+{
+  "name": "storeo-server",
+  "version": "1.0.0",
+  "description": "An open source e-commerce site",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctfrancia/Storeo-server.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "open",
+    "source",
+    "storeo"
+  ],
+  "author": "Christian Francia, Zain Al Syed, Luca Panzavolta, Uros Cirkovic, Tomasz Gasiemica",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ctfrancia/Storeo-server/issues"
+  },
+  "homepage": "https://github.com/ctfrancia/Storeo-server#readme"
+}
