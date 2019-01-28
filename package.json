@@ -4,7 +4,9 @@
   "description": "An open source e-commerce site",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "precommit": "npm run lint",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,10 @@
     "sequelize": "^4.42.0"
   },
   "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "husky": "^1.3.1",
     "nodemon": "^1.18.9"
   }
 }
