@@ -1,5 +1,9 @@
-const express = require('express');
+import express from 'express';
+import { getProductsById } from '../Controllers/User Controllers/getProductsById';
+
 const router = express.Router();
+
+
 
 //================================
 //         USER ROUTES
@@ -10,6 +14,8 @@ const router = express.Router();
 
 //SPECIFIC PRODUCT
 //get /products/:productId
+
+router.get('/products', getProductsById);
 
 //CATEGORIES
 //get /category 
