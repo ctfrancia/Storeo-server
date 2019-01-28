@@ -1,9 +1,9 @@
 import express from 'express';
+import { getAllProducts } from '../Controllers/User Controllers/getAllProducts';
 import { getProductsById } from '../Controllers/User Controllers/getProductsById';
-
-const router = express.Router();
-
-
+import { getCategories } from '../Controllers/User Controllers/getCategories';
+import { getProductsByCategory } from '../Controllers/User Controllers/getProductsByCategory';
+import { postNewOrder } from '../Controllers/User Controllers/postNewOrder';
 
 const router = express.Router();
 
@@ -14,24 +14,27 @@ const router = express.Router();
 // PRODUCTS
 // get /products
 
+router.get('/products', getAllProducts);
+
 // SPECIFIC PRODUCT
 // get /products/:productId
 
-<<<<<<< HEAD
-router.get('/products', getProductsById);
+router.get('/products/:productId', getProductsById);
 
 //CATEGORIES
-//get /category 
-=======
-// CATEGORIES
-// get /category
->>>>>>> babc8a9bc4305a462e7bcd0f56b93d1dd5538472
+//get /categories 
+
+router.get('/categories', getCategories);
 
 // PRODUCTS BY CATEGORY
 // get /products/:categoryId
 
+router.get('/category/:categoryId', getProductsByCategory);
+
 // ORDERS
 // post /orders
+
+router.post('/orders', postNewOrder);
 
 // SIGNUP
 // post /signup
