@@ -19,6 +19,9 @@ router.get('/products', getAllProducts);
 // SPECIFIC PRODUCT
 // get /products/:productId
 
+// CATEGORIES
+// get /category
+
 router.get('/products/:productId', getProductsById);
 
 //CATEGORIES

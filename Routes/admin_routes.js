@@ -1,11 +1,10 @@
-const express = require('express');
-const ctrls = require('../Controllers/admin.controllers')
-const router = express.Router();
+const router = require('express').Router();
+const ctrls = require('../Controllers/AdminControllers/admin.controllers');
 
 
+router.get('/', ctrls.getAllCategories);
 
-router.get('/', ctrl.getAllCategories);
-
+module.exports = router;
 
 //= ===============================
 //         ADMIN ROUTES
