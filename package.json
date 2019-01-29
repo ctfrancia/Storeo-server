@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "precommit": "npm run lint",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start": "nodemon --exec babel-node index.js"
   },
   "repository": {
     "type": "git",
