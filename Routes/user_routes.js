@@ -11,18 +11,15 @@ const router = express.Router();
 //         USER ROUTES
 //= ===============================
 
-// PRODUCTS
-// get /products
-
+//  PRODUCTS
 router.get('/products', getAllProducts);
 
-// SPECIFIC PRODUCT
-// get /products/:productId
+//  SPECIFIC PRODUCT
+router.get('/products/:productId', getProductsById);
 
 // CATEGORIES
 // get /category
 
-router.get('/products/:productId', getProductsById);
 
 // CATEGORIES
 // get /categories

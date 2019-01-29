@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Sequelize = require('sequelize');
 /* eslint-disable */
 //FIXME: when commenting out config can no longer connect to external db
