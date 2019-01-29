@@ -26,12 +26,12 @@ module.exports = router;
 // get /admin/orders
 
 // CATEGORIES
-// get /admin/category
+// get /admin/categories
 
 // SPECIFIC CATEGORY
-// post /admin/category/:categoryId
-// put /admin/category/:categoryId
-// delete /admin/category/:categoryId
+// post /admin/categories/:categoryId
+// put /admin/categories/:categoryId
+// delete /admin/categories/:categoryId
 
 // LOGIN
 // post /admin/login

@@ -1,35 +1,29 @@
 import express from 'express';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductsById from '../Controllers/UserControllers/getProductsById';
-import getCategories from '../Controllers/UserControllers/getCategories';
+import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import getProductsByCategory from '../Controllers/UserControllers/getProductsByCategory';
 import postNewOrder from '../Controllers/UserControllers/postNewOrder';
+import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 
 const router = express.Router();
 
-//= ===============================
-//         USER ROUTES
-//= ===============================
-
-//  PRODUCTS
+//  GET ALL PRODUCTS - DONE
 router.get('/products', getAllProducts);
 
-//  SPECIFIC PRODUCT
+//  GET SPECIFIC PRODUCT BY ID - DONE
 router.get('/products/:productId', getProductsById);
 
-// CATEGORIES
-// get /category
+// GET SPECIFIC PRODUCT BY CATEGORY ID - DONE
+router.get('/products/cat/:categoryId', getProductsByCategoryId);
 
-
-// CATEGORIES
-// get /categories
-
-router.get('/categories', getCategories);
+// GET ALL CATEGORIES - DONE
+router.get('/categories', getAllCategories);
 
 // PRODUCTS BY CATEGORY
 // get /products/:categoryId
 
-router.get('/category/:categoryId', getProductsByCategory);
+router.get('/categories/:categoryId', getProductsByCategory);
 
 // ORDERS
 // post /orders
