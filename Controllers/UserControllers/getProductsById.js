@@ -1,4 +1,4 @@
-import { Product } from '../../Models/ProductModel';
+import Product from '../../Models/ProductModel';
 import connection from '../../db';
 
 const sequelize = connection();
@@ -11,6 +11,7 @@ const getProductsById = async (req, res) => {
       .status(200)
       .send(product);
   } catch (err) {
+    //  eslint-disable-next-line
     console.error('Error in getProductById Controller =>', err);
     res
       .status(401)
