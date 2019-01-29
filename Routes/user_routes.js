@@ -51,3 +51,4 @@ router.post('/orders', postNewOrder);
 
 // PREVIOUS ORDERS ???
 // get /orders
+module.exports = router;

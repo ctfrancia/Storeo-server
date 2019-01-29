@@ -1,13 +1,13 @@
-const adminDB = require('../../Models/admin.model');
+// const adminDB = require('../../Models/admin.model');
 
-const getAllCategories = (req, res, next) => {
-  adminDB();
-  req();
+exports.getAllCategories = (req, res) => {
+  // adminDB();
+  // req();
   res
     .status(200)
     .send('hello')
     .end();
-  next();
+  // next();
 };
 
-export default getAllCategories;
+// export default getAllCategories;
