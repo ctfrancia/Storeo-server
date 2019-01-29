@@ -1,5 +1,5 @@
-const getProductsById = function () {
-  
+const getProductsById = () => {
+
 };
 
-export default { getProductsById };
+export default getProductsById;

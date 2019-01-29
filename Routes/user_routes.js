@@ -1,9 +1,10 @@
 import express from 'express';
-import { getAllProducts } from '../Controllers/User Controllers/getAllProducts';
-import { getProductsById } from '../Controllers/User Controllers/getProductsById';
-import { getCategories } from '../Controllers/User Controllers/getCategories';
-import { getProductsByCategory } from '../Controllers/User Controllers/getProductsByCategory';
-import { postNewOrder } from '../Controllers/User Controllers/postNewOrder';
+
+import getAllProducts from '../Controllers/UserControllers/getAllProducts';
+import getProductsById from '../Controllers/UserControllers/getProductsById';
+import getCategories from '../Controllers/UserControllers/getCategories';
+import getProductsByCategory from '../Controllers/UserControllers/getProductsByCategory';
+import postNewOrder from '../Controllers/UserControllers/postNewOrder';
 
 const router = express.Router();
 
@@ -24,8 +25,8 @@ router.get('/products', getAllProducts);
 
 router.get('/products/:productId', getProductsById);
 
-//CATEGORIES
-//get /categories 
+// CATEGORIES
+// get /categories
 
 router.get('/categories', getCategories);
 

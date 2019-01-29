@@ -5,8 +5,9 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
 const env = process.env.NODE_ENV || 'development';
+/* eslint-disable */
 const config = require(path.resolve(__dirname, './../config/config.js'))[env];
-
+/* eslint-enable */
 db.setup = () => {
   let sequelize;
   if (config.use_env_variable) {
