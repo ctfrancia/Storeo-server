@@ -1,7 +1,5 @@
 import Sequelize from 'sequelize';
-import connection from '../db';
-
-const sequelize = connection();
+import sequelize from '../db';
 
 const Product = sequelize.define('product', {
   name: {
