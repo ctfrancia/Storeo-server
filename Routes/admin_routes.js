@@ -1,7 +1,9 @@
-const router = require('express').Router();
-const ctrls = require('../Controllers/AdminControllers/admin.controllers');
+import express from 'express';
+import getAllCategories from '../Controllers/AdminControllers/admin.controllers';
 
-router.get('/getAllCategories', ctrls.getAllCategories);
+const router = express.Router();
+
+router.get('/getAllCategories', getAllCategories);
 
 
 module.exports = router;
