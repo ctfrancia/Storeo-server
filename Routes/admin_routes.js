@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const ctrls = require('../Controllers/AdminControllers/admin.controllers');
 
-
-router.get('/', ctrls.getAllCategories);
+router.get('/getAllCategories', ctrls.getAllCategories);
 
 module.exports = router;
 

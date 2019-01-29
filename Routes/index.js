@@ -9,6 +9,8 @@ const adminRoutes = require('./admin_routes');
 
 //  ADMIN ROUTES
 
-router.use('/getAllCategories', adminRoutes);
+router
+  .use('/admin', adminRoutes);
+// .use('/', userRoutes);
 
 module.exports = router;
