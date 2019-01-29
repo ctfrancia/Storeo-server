@@ -1,7 +1,5 @@
 import Product from '../../Models/ProductModel';
-import connection from '../../db';
-
-const sequelize = connection();
+import sequelize from '../../db';
 
 const getAllProducts = async (req, res) => {
   try {
