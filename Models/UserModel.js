@@ -1,9 +1,8 @@
 import Sequelize from 'sequelize';
+// import bcrypt from 'bcrypt';
 import connection from '../db';
 
-const sequelize = connection();
-
-const User = sequelize.define('user', {
+const User = connection.define('user', {
   password: {
     type: Sequelize.STRING,
   },
@@ -35,6 +34,8 @@ const User = sequelize.define('user', {
     type: Sequelize.INTEGER,
   },
 });
+
+export default User;
 
 //  eslint-disable-next-line
 console.log(User);
