@@ -1,5 +1,4 @@
 import express from 'express';
-
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductsById from '../Controllers/UserControllers/getProductsById';
 import getCategories from '../Controllers/UserControllers/getCategories';
