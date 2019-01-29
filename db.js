@@ -2,7 +2,7 @@ require('dotenv').config();
 const Sequelize = require('sequelize');
 /* eslint-disable */
 //FIXME: when commenting out config can no longer connect to external db
-const config = require('./config/config');
+//const config = require('./config/config');
 /* eslint-enable */
 // Create the url based on the config file .env in the root directory
 // const DB_URL = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.HOST}:${
@@ -28,9 +28,7 @@ dbConnection
   .then(() => {
     // eslint-disable-next-line
     console.log(
-      `✅ Connection to database ${process.env.DB_NAME} at ${process.env.DB_HOST}:${
-        process.env.DB_PORT
-      } has been established successfully.`,
+      `✅ Connection to database ${process.env.DB_NAME} at ${process.env.DB_HOST}:${process.env.DB_PORT} has been established successfully.`,
     );
   })
   .catch((err) => {

@@ -1,7 +1,6 @@
 import Product from '../../Models/ProductModel';
 import sequelize from '../../db';
 
-
 const getAllProducts = async (req, res) => {
   try {
     const products = await sequelize.query('SELECT * FROM products', { model: Product });
