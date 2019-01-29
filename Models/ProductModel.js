@@ -24,5 +24,4 @@ const Product = sequelize.define('product', {
   },
 });
 
-//  eslint-disable-next-line
-console.log(Product);
+exports.Product = Product;
