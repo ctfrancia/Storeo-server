@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const Order = sequelize.define('Order', {
+  const Order = sequelize.define('order', {
     id: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -32,9 +32,8 @@ module.exports = (sequelize, DataTypes) => {
   {
     timestamps: false,
   });
-
   Order.associate = (models) => {
-    Order.belongsTo(models.User, {
+    Order.hasMany(models.ordered_items, {
       onDelete: 'CASCADE',
       foreginKey: {
         allowNull: false,

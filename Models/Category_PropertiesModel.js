@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const CategoryProperties = sequelize.define('Category_Properties', {
+  const CategoryProperties = sequelize.define('category_properties', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -14,13 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     created_on: {
       allowNull: false,
       type: DataTypes.DATE,
-      defaultValue: DataTypes.fn('NOW'),
+      defaultValue: DataTypes.NOW,
     },
     updated_on: {
       allowNull: false,
       type: DataTypes.DATE,
-      defaultValue: DataTypes.fn('NOW'),
+      defaultValue: DataTypes.NOW,
     },
   });
+
+  CategoryProperties.associate = (models) => {
+    CategoryProperties.hasMany(models.product_properties, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return CategoryProperties;
 };

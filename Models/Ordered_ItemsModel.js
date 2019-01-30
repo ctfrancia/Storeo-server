@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const OrderedItems = sequelize.define('Ordered_Items', {
+  const OrderedItems = sequelize.define('ordered_items', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -22,11 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     created_on: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.fn('NOW'),
+      defaultValue: DataTypes.NOW,
     },
     updated_on: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.fn('NOW'),
+      defaultValue: DataTypes.NOW,
     },
   });
   return OrderedItems;

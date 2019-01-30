@@ -2,12 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes';
 
-const app = express();
 const logger = require('morgan');
+const { db } = require('./Models');
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 const ENV = process.env.NODE_ENV || 'development';
 
+db.setup();
 app
   .use(logger('tiny'))
   .use(cors())
