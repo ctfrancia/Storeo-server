@@ -1,4 +1,5 @@
-const postNewOrder = () => {
+
+const postNewOrder = async () => {
 
 };
 

@@ -1,17 +1,14 @@
 import Sequelize from 'sequelize';
-// import bcrypt from 'bcrypt';
-import connection from '../db';
+import sequelize from '../db';
 
-const Category = connection.define('category', {
+const Category = sequelize.define('category', {
   id: {
-    type: Sequelize.INTEGER(11),
-    notNull: true,
-    autoIncrement: true,
+    type: Sequelize.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   name: {
     type: Sequelize.STRING,
-    notNull: true,
   },
 });
 

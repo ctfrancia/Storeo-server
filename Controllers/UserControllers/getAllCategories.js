@@ -1,19 +1,19 @@
-import CategoryModel from '../../Models/CategoryModel';
+import Category from '../../Models/CategoryModel';
 import sequelize from '../../db';
 
-const getAllCategories = (req, res) => {
-  sequelize
-    .query('SELECT * FROM categories', { model: CategoryModel })
-    .then((categories) => {
-      res.status(200).send(categories);
-    })
-    .catch((err) => {
-      //  eslint-disable-next-line
-      console.log('Error in getAllCategories Controller =>', err);
-      res /*  */
-        .status(401)
-        .send('Unable to retrieve categories.');
-    });
+const getAllCategories = async (req, res) => {
+  try {
+    const categories = await sequelize.query('SELECT * FROM categories', { model: Category });
+    res
+      .status(200)
+      .send(categories);
+  } catch (err) {
+    //  eslint-disable-next-line
+    console.error('Error in getAllCategories Controller =>', err);
+    res
+      .status(401)
+      .send('Impossible to retrieve categories.');
+  }
 };
 
 export default getAllCategories;
