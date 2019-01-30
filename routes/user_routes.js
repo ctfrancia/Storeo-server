@@ -2,7 +2,6 @@ import express from 'express';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductsById from '../Controllers/UserControllers/getProductsById';
 import getAllCategories from '../Controllers/UserControllers/getAllCategories';
-import getProductsByCategory from '../Controllers/UserControllers/getProductsByCategory';
 import postNewOrder from '../Controllers/UserControllers/postNewOrder';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 
