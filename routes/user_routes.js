@@ -1,39 +1,22 @@
 import express from 'express';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductsById from '../Controllers/UserControllers/getProductsById';
-import getCategories from '../Controllers/UserControllers/getCategories';
-import getProductsByCategory from '../Controllers/UserControllers/getProductsByCategory';
+import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import postNewOrder from '../Controllers/UserControllers/postNewOrder';
+import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 
 const router = express.Router();
 
-//= ===============================
-//         USER ROUTES
-//= ===============================
-
-//  PRODUCTS
+//  Products
 router.get('/products', getAllProducts);
-
-//  SPECIFIC PRODUCT
 router.get('/products/:productId', getProductsById);
+router.get('/products/cat/:categoryId', getProductsByCategoryId);
 
-// CATEGORIES
-// get /category
+// Categories
+router.get('/categories', getAllCategories);
 
-
-// CATEGORIES
-// get /categories
-
-router.get('/categories', getCategories);
-
-// PRODUCTS BY CATEGORY
-// get /products/:categoryId
-
-router.get('/category/:categoryId', getProductsByCategory);
-
-// ORDERS
+// Orders
 // post /orders
-
 router.post('/orders', postNewOrder);
 
 // SIGNUP
