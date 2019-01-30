@@ -1,5 +1,6 @@
+
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define('product', {
+  const OrderedItems = sequelize.define('Ordered_Items', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -7,35 +8,26 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       unique: true,
     },
-    name: {
-      type: DataTypes.STRING,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    price: {
+    quantity: {
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
-    timestamp: {
-      type: DataTypes.DATE,
-      notNull: true,
-      defaultValue: DataTypes.NOW,
+    product_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
     },
-    tags: {
-      type: DataTypes.JSON,
-    },
-    category_id: {
+    order_id: {
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
     created_on: {
-      type: DataTypes.Date,
+      type: DataTypes.DATE,
       defaultValue: DataTypes.fn('NOW'),
     },
     updated_on: {
-      type: DataTypes.Date,
+      type: DataTypes.DATE,
       defaultValue: DataTypes.fn('NOW'),
     },
   });
-
-  return Product;
+  return OrderedItems;
 };

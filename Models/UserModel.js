@@ -1,6 +1,5 @@
-
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('user', {
+  const User = sequelize.define('User', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -52,7 +51,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
+    created_on: {
+      type: DataTypes.Date,
+      defaultValue: DataTypes.fn('NOW'),
+    },
+    updated_on: {
+      type: DataTypes.Date,
+      defaultValue: DataTypes.fn('NOW'),
+    },
   });
+
+  // User.associate = (models) => {
+  //   User.belongsTo(models.)
+  // }
 
   return User;
 };
