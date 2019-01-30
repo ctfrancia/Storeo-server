@@ -28,14 +28,28 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     created_on: {
-      type: DataTypes.Date,
-      defaultValue: DataTypes.fn('NOW'),
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     updated_on: {
-      type: DataTypes.Date,
-      defaultValue: DataTypes.fn('NOW'),
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
   });
+  Product.associate = (models) => {
+    Product.hasMany(models.ordered_items, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    Product.hasMany(models.product_properties, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
   return Product;
 };

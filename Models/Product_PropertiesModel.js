@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const pPV = sequelize.define('Product_Property_Values', {
+  const pP = sequelize.define('product_properties', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     created_on: {
-      type: DataTypes.Date,
-      defaultValue: DataTypes.fn('NOW'),
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     updated_on: {
-      type: DataTypes.Date,
-      defaultValue: DataTypes.fn('NOW'),
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
   });
-  return pPV;
+  return pP;
 };
