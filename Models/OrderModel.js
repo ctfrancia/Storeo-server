@@ -1,23 +1,27 @@
 import Sequelize from 'sequelize';
 import sequelize from '../db';
 
-const Order = sequelize.define('product', {
+const Order = sequelize.define('order', {
   id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
+    type: Sequelize.INTEGER(11),
     autoIncrement: true,
+    primaryKey: true,
   },
   order_num: {
     type: Sequelize.STRING,
+    notNull: true,
   },
   order_status: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
+    notNull: true,
   },
   special_instructions: {
     type: Sequelize.STRING,
+    notNull: true,
   },
   user_id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER(11),
+    defaultValue: null,
   },
 }, { timestamps: false });
 
