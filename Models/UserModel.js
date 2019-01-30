@@ -8,9 +8,11 @@ const User = connection.define('user', {
   },
   auth_token: {
     type: Sequelize.STRING,
+    unique: true,
   },
   email: {
     type: Sequelize.STRING,
+    unique: true,
   },
   role: {
     type: Sequelize.TINYINT,
