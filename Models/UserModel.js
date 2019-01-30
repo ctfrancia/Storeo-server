@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     id: {
@@ -25,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       allowNull: false,
-      type: DataTypes.TINYINT,
+      type: DataTypes.BOOLEAN,
       defaultValue: 0,
     },
     first_name: {
@@ -52,7 +51,22 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
+    created_on: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    updated_on: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
   });
-
+  User.associate = (models) => {
+    User.hasMany(models.order, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return User;
 };
