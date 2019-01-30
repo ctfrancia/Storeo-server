@@ -12,7 +12,7 @@ const Order = sequelize.define('order', {
     notNull: true,
   },
   order_status: {
-    type: Sequelize.STRING,
+    type: Sequelize.TINYINT(1),
     notNull: true,
   },
   special_instructions: {
@@ -22,6 +22,11 @@ const Order = sequelize.define('order', {
   user_id: {
     type: Sequelize.INTEGER(11),
     defaultValue: null,
+  },
+  timestamp: {
+    type: Sequelize.DATE,
+    notNull: true,
+    defaultValue: Sequelize.NOW,
   },
 }, { timestamps: false });
 

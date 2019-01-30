@@ -13,6 +13,8 @@ const Product = sequelize.define('product', {
   },
   timestamp: {
     type: Sequelize.DATE,
+    notNull: true,
+    defaultValue: Sequelize.NOW,
   },
   tags: {
     type: Sequelize.JSON,
