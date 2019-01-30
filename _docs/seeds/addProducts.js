@@ -17,7 +17,6 @@ const createFakeProducts = () => ({
 const fakeProducts = [];
 const desiredAmout = 50;
 
-console.log(faker.image.imageUrl());
 /* eslint-disable-next-line */
 for (let i = 0; i < desiredAmout; i++) {
   fakeProducts.push(createFakeProducts());
