@@ -17,18 +17,14 @@ const createFakeProducts = () => ({
 const fakeProducts = [];
 const desiredAmout = 50;
 
-console.log(faker.image.imageUrl());
-
+/* eslint-disable-next-line */
 for (let i = 0; i < desiredAmout; i++) {
   fakeProducts.push(createFakeProducts());
 }
-
+/* eslint-disable-next-line */
 exports.seed = (knex, Promise) => (
   // Deletes ALL existing entries
   knex('products')
     .del()
-    .then(() => (
-      // Inserts seed entries
-      knex('products').insert(fakeProducts)
-    ))
+    .then(() => knex('products').insert(fakeProducts))
 );
