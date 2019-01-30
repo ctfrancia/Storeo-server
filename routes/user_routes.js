@@ -20,14 +20,7 @@ router.get('/products/cat/:categoryId', getProductsByCategoryId);
 // GET ALL CATEGORIES - DONE
 router.get('/categories', getAllCategories);
 
-// PRODUCTS BY CATEGORY
-// get /products/:categoryId
-
-router.get('/categories/:categoryId', getProductsByCategory);
-
-// ORDERS
-// post /orders
-
+// ORDERS - WORK IN PROGRESS
 router.post('/orders', postNewOrder);
 
 // SIGNUP
