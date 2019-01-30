@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
@@ -53,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     created_on: {
+      type: DataTypes.Date,
+      defaultValue: DataTypes.fn('NOW'),
+    },
+    updated_on: {
       type: DataTypes.Date,
       defaultValue: DataTypes.fn('NOW'),
     },

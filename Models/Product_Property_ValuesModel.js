@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define('product', {
+  const pPV = sequelize.define('Product_Property_Values', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -7,24 +7,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       unique: true,
     },
-    name: {
+    property_value: {
+      allowNull: false,
       type: DataTypes.STRING,
     },
-    description: {
-      type: DataTypes.STRING,
-    },
-    price: {
-      type: DataTypes.INTEGER,
-    },
-    timestamp: {
-      type: DataTypes.DATE,
-      notNull: true,
-      defaultValue: DataTypes.NOW,
-    },
-    tags: {
-      type: DataTypes.JSON,
-    },
-    category_id: {
+    product_id: {
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
     created_on: {
@@ -36,6 +24,5 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.fn('NOW'),
     },
   });
-
-  return Product;
+  return pPV;
 };
