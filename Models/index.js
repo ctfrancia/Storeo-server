@@ -3,8 +3,6 @@ const path = require('path');
 const Sequelize = require('sequelize');
 
 const baseName = path.basename(__filename);
-// console.log(baseName);
-
 const db = {};
 const env = process.env.NODE_ENV || 'development';
 /* eslint-disable */
@@ -46,24 +44,3 @@ db.setup = () => {
 module.exports = {
   db,
 };
-
-// const mysql = require('mysql');
-// const host = process.env.HOST;
-// const user = process.env.USER;
-// const password = process.env.PASSWORD;
-// const dbName = process.env.DB_NAME;
-
-// const con = mysql.createConnection({
-//   host: `${host}`,
-//   user: `${user}`,
-//   password: `${password}`,
-//   database: `${dbName}`,
-// });
-
-// con.connect((err) => {
-//   if (err) {
-//     console.log('Error: ', err);
-//     return;
-//   }
-//   console.log('Connected!!!');
-// });
