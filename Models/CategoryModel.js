@@ -1,15 +1,18 @@
-import Sequelize from 'sequelize';
-import sequelize from '../db';
+module.exports = (sequelize, DataTypes) => {
+  const Category = sequelize.define('category', {
+    id: {
+      type: sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: sequelize.STRING,
+    },
+    created_on: {
+      type: DataTypes.Date,
+      defaultValue: DataTypes.fn('NOW'),
+    },
+  });
 
-const Category = sequelize.define('category', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  name: {
-    type: Sequelize.STRING,
-  },
-});
-
-export default Category;
+  return Category;
+};

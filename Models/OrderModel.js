@@ -1,33 +1,45 @@
-import Sequelize from 'sequelize';
-import sequelize from '../db';
 
-const Order = sequelize.define('order', {
-  id: {
-    type: Sequelize.INTEGER(11),
-    autoIncrement: true,
-    primaryKey: true,
+module.exports = (sequelize, DataTypes) => {
+  const Order = sequelize.define('Order', {
+    id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    order_num: {
+      type: DataTypes.UUID,
+      notNull: true,
+    },
+    order_status: {
+      type: DataTypes.BOOLEAN,
+      notNull: true,
+    },
+    special_instructions: {
+      type: DataTypes.STRING,
+      notNull: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      defaultValue: null,
+    },
+    timestamp: {
+      type: DataTypes.DATE,
+      notNull: true,
+      defaultValue: DataTypes.NOW,
+    },
   },
-  order_num: {
-    type: Sequelize.STRING,
-    notNull: true,
-  },
-  order_status: {
-    type: Sequelize.TINYINT(1),
-    notNull: true,
-  },
-  special_instructions: {
-    type: Sequelize.STRING,
-    notNull: true,
-  },
-  user_id: {
-    type: Sequelize.INTEGER(11),
-    defaultValue: null,
-  },
-  timestamp: {
-    type: Sequelize.DATE,
-    notNull: true,
-    defaultValue: Sequelize.NOW,
-  },
-}, { timestamps: false });
+  {
+    timestamps: false,
+  });
 
-export default Order;
+  Order.associate = (models) => {
+    Order.belongsTo(models.User, {
+      onDelete: 'CASCADE',
+      foreginKey: {
+        allowNull: false,
+      },
+    });
+  };
+  return Order;
+};
