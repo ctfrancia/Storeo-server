@@ -1,41 +1,51 @@
-import Sequelize from 'sequelize';
-// import bcrypt from 'bcrypt';
-import connection from '../db';
 
-const User = connection.define('user', {
-  password: {
-    type: Sequelize.STRING,
-  },
-  auth_token: {
-    type: Sequelize.STRING,
-  },
-  email: {
-    type: Sequelize.STRING,
-  },
-  role: {
-    type: Sequelize.TINYINT,
-  },
-  first_name: {
-    type: Sequelize.STRING,
-  },
-  last_name: {
-    type: Sequelize.STRING,
-  },
-  address: {
-    type: Sequelize.STRING,
-  },
-  country: {
-    type: Sequelize.STRING,
-  },
-  zip: {
-    type: Sequelize.STRING,
-  },
-  phone: {
-    type: Sequelize.INTEGER,
-  },
-});
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('user', {
+    password: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    auth_token: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    email: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    role: {
+      allowNull: false,
+      type: DataTypes.TINYINT,
+      defaultValue: 0,
+    },
+    first_name: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    last_name: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    address: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    country: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    zip: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    phone: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+  });
 
-export default User;
-
-//  eslint-disable-next-line
-console.log(User);
+  return User;
+};
