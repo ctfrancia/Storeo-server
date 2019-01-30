@@ -5,6 +5,7 @@ import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import postNewOrder from '../Controllers/UserControllers/postNewOrder';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 import userSignup from '../Controllers/UserControllers/userSignup';
+import userLogin from '../Controllers/UserControllers/userLogin';
 
 const router = express.Router();
 
@@ -23,7 +24,7 @@ router.post('/orders', postNewOrder);
 router.post('/signup', userSignup);
 
 // LOGIN
-// post /login
+router.get('/login', userLogin);
 
 // SEARCH
 // post /search
