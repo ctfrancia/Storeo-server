@@ -4,7 +4,8 @@ import Order from '../../Models/order.model';
 import sequelize from '../../db';
 
 const postNewOrder = async (req, res) => {
-  // Deconstruct the `req` object, & rename values to camelCase notation [ (from) req_prop_name: (to) reqPropName]
+// Deconstruct the `req` object, & rename values to
+// camelCase notation [ (from) req_prop_name: (to) reqPropName]
   const {
     order_num: orderNum,
     order_status: orderStatus,
