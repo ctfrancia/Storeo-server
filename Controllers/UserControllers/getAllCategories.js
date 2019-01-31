@@ -2,7 +2,7 @@ import sequelize from '../../db';
 
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await sequelize.query(
+    const [categories] = await sequelize.query(
       `SELECT categories.id, categories.name, 
        GROUP_CONCAT(category_properties.property_name) AS property_names, 
        GROUP_CONCAT(category_properties.units) AS property_units

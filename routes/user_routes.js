@@ -7,6 +7,7 @@ import getProductsByCategoryId from '../Controllers/UserControllers/getProductBy
 import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
 import insertAddress from '../Controllers/UserControllers/insertAddress';
+import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
 
 const router = express.Router();
 
@@ -33,6 +34,7 @@ router.post('/address', insertAddress);
 // SEARCH
 // post /search
 
-// PREVIOUS ORDERS ???
-// get /orders
+//  Previous Orders
+router.get('/orders', getAOrdersFromUser);
+
 module.exports = router;
