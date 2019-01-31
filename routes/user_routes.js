@@ -6,6 +6,7 @@ import postNewOrder from '../Controllers/UserControllers/postNewOrder';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
+import insertAddress from '../Controllers/UserControllers/insertAddress';
 
 const router = express.Router();
 
@@ -20,11 +21,14 @@ router.get('/categories', getAllCategories);
 // Orders
 router.post('/orders', postNewOrder);
 
-// SIGNUP
+// Signup
 router.post('/signup', userSignup);
 
-// LOGIN
+// Login
 router.get('/login', userLogin);
+
+// Add Address
+router.post('/address', insertAddress);
 
 // SEARCH
 // post /search
