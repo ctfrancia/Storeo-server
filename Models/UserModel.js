@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       allowNull: false,
       type: DataTypes.STRING,
-      unique: true,
     },
     auth_token: {
       allowNull: false,
@@ -36,19 +35,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     address: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     country: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     zip: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     phone: {
-      allowNull: false,
       type: DataTypes.INTEGER,
     },
     /* eslint-disable */
