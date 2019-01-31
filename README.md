@@ -6,6 +6,7 @@ An open source e-commerce
 `$ npm install` for dependencies once the DB has been created,
 
 *Make sure that you create the database and then place the name of it in the .env file to connect*
+*IN YOUR ENV FILE MAKE SURE YOU CONFIGURE IT TO YOUR LOCAL HOST SETTINGS!!*
 
 `$ npm run start` will run the server with babel and create the database for you, babel is needed as we are using import/export not supported by Nodejs at time of publication.
 
