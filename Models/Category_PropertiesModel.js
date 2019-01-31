@@ -1,36 +1,35 @@
 module.exports = (sequelize, DataTypes) => {
-  const Category = sequelize.define('category', {
+  const CategoryProperties = sequelize.define('category_properties', {
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
+      allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      unique: true,
     },
-    name: {
+    property: {
+      allowNull: false,
       type: DataTypes.STRING,
     },
     created_on: {
+      allowNull: false,
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
     updated_on: {
+      allowNull: false,
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
   });
-  Category.associate = (models) => {
-    Category.hasMany(models.product, {
-      onDelete: 'CASCADE',
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-    Category.hasMany(models.category_properties, {
+
+  CategoryProperties.associate = (models) => {
+    CategoryProperties.hasMany(models.product_properties, {
       onDelete: 'CASCADE',
       foreignKey: {
         allowNull: false,
       },
     });
   };
-
-  return Category;
+  return CategoryProperties;
 };

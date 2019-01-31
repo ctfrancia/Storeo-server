@@ -1,41 +1,72 @@
-import Sequelize from 'sequelize';
-// import bcrypt from 'bcrypt';
-import connection from '../db';
-
-const User = connection.define('user', {
-  password: {
-    type: Sequelize.STRING,
-  },
-  auth_token: {
-    type: Sequelize.STRING,
-  },
-  email: {
-    type: Sequelize.STRING,
-  },
-  role: {
-    type: Sequelize.TINYINT,
-  },
-  first_name: {
-    type: Sequelize.STRING,
-  },
-  last_name: {
-    type: Sequelize.STRING,
-  },
-  address: {
-    type: Sequelize.STRING,
-  },
-  country: {
-    type: Sequelize.STRING,
-  },
-  zip: {
-    type: Sequelize.STRING,
-  },
-  phone: {
-    type: Sequelize.INTEGER,
-  },
-});
-
-export default User;
-
-//  eslint-disable-next-line
-console.log(User);
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('user', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      unique: true,
+    },
+    password: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    auth_token: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    email: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    role: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: 0,
+    },
+    first_name: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    last_name: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    address: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    country: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    zip: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    phone: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    created_on: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    updated_on: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+  });
+  User.associate = (models) => {
+    User.hasMany(models.order, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+  return User;
+};

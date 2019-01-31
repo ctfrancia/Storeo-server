@@ -4,6 +4,8 @@ import getProductsById from '../Controllers/UserControllers/getProductsById';
 import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import postNewOrder from '../Controllers/UserControllers/postNewOrder';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
+import userSignup from '../Controllers/UserControllers/userSignup';
+import userLogin from '../Controllers/UserControllers/userLogin';
 
 const router = express.Router();
 
@@ -16,14 +18,13 @@ router.get('/products/cat/:categoryId', getProductsByCategoryId);
 router.get('/categories', getAllCategories);
 
 // Orders
-// post /orders
 router.post('/orders', postNewOrder);
 
 // SIGNUP
-// post /signup
+router.post('/signup', userSignup);
 
 // LOGIN
-// post /login
+router.get('/login', userLogin);
 
 // SEARCH
 // post /search
