@@ -1,6 +1,6 @@
 import express from 'express';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
-import getProductsById from '../Controllers/UserControllers/getProductsById';
+import getProductById from '../Controllers/UserControllers/getProductById';
 import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import postNewOrder from '../Controllers/UserControllers/postNewOrder';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
@@ -11,7 +11,7 @@ const router = express.Router();
 
 //  Products
 router.get('/products', getAllProducts);
-router.get('/products/:productId', getProductsById);
+router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
 
 // Categories
