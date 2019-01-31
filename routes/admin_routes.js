@@ -1,9 +1,11 @@
 import express from 'express';
-import getAllCategories from '../Controllers/AdminControllers/admin.controllers';
+import getAllCategories from '../Controllers/AdminControllers/admin.getAllCategories';
+import postNewProduct from '../Controllers/AdminControllers/admin.postNewProduct';
 
 const router = express.Router();
 
-router.get('/getAllCategories', getAllCategories);
+router.get('/getallcategories', getAllCategories);
+router.post('/newproduct', postNewProduct);
 
 
 module.exports = router;

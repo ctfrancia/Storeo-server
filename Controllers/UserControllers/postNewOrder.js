@@ -15,7 +15,7 @@ const postNewOrder = async (req, res) => {
 
   try {
     const result = await sequelize.query(
-      `INSERT INTO orders 
+      `INSERT INTO orders
       (order_num, order_status, special_instructions, user_id)
       VALUES ( :orderNum, :orderStatus, :specInstructions, :userId)
       `,

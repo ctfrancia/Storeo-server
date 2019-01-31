@@ -1,3 +1,5 @@
+import CONSTANTS from '../_CONSTANTS';
+
 module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define('product', {
     id: {
@@ -15,34 +17,28 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    tags: {
-      type: DataTypes.JSON,
-    },
-    image: {
-      allowNull: false,
-      type: DataTypes.STRING,
-    },
-    images: {
-      type: DataTypes.JSON,
-    },
-    discount: {
-      type: DataTypes.DECIMAL(2, 1),
-    },
     price: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    selling_price: {
+    vat_rate: {
       allowNull: false,
       type: DataTypes.INTEGER,
+      defaultValue: CONSTANTS.vatRate,
     },
-    timestamp: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      notNull: true,
-      defaultValue: DataTypes.NOW,
+    discount: {
+      type: DataTypes.DECIMAL(4, 2),
+    },
+    tags: {
+      type: DataTypes.JSON,
+    },
+    images: {
+      type: DataTypes.JSON,
     },
     /* eslint-disable */
+    'category_id': {
+      type: DataTypes.INTEGER,
+    },
     'created_at': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
@@ -66,6 +62,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     Product.hasMany(models.product_properties, {
       onDelete: 'CASCADE',
+      type: DataTypes.INTEGER,
       foreignKey: {
         // allowNull: false,
       },
