@@ -4,6 +4,7 @@ import deleteCategory from '../Controllers/AdminControllers/deleteCategory';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductById from '../Controllers/UserControllers/getProductById';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
+import updateCategory from '../Controllers/AdminControllers/updateCategory';
 
 const router = express.Router();
 //= ===============================
@@ -26,10 +27,10 @@ router.get('/products/cat/:categoryId', getProductsByCategoryId);
 // CATEGORIES
 router.get('/categories', getAllCategories);
 router.delete('/categories/:categoryId', deleteCategory);
+router.put('/categories/:categoryId', updateCategory);
 
 // SPECIFIC CATEGORY
 // post /admin/categories/:categoryId
-// put /admin/categories/:categoryId
 
 // LOGIN
 // post /admin/login
