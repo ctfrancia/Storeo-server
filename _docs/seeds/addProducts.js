@@ -10,7 +10,7 @@ const createFakeProducts = () => ({
   image: JSON.stringify(`${faker.image.imageUrl()}`),
   images: JSON.stringify(`${faker.image.imageUrl()},
   ${faker.image.imageUrl()}`),
-  discount: faker.random.number(100),
+  discount: faker.random.number(0),
   price: faker.commerce.price(),
   selling_price: faker.random.number(100),
 });

@@ -54,8 +54,8 @@ exports.up = async (knex, Promise) => {
         .notNullable()
         .onDelete('cascade');
   })
-  .createTable('product_property_values', product_property_values => {
-    product_property_values
+  .createTable('product_properties', product_properties => {
+    product_properties
       .increments('id').primary()
       .string('property_value').notNullable()
       .integer('product_id')
