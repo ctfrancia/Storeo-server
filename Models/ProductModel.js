@@ -8,33 +8,44 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     name: {
+      allowNull: false,
       type: DataTypes.STRING,
     },
     description: {
+      allowNull: false,
       type: DataTypes.STRING,
-    },
-    price: {
-      type: DataTypes.INTEGER,
-    },
-    timestamp: {
-      type: DataTypes.DATE,
-      notNull: true,
-      defaultValue: DataTypes.NOW,
     },
     tags: {
       type: DataTypes.JSON,
     },
-    category_id: {
+    image: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    images: {
+      type: DataTypes.JSON,
+    },
+    discount: {
+      type: DataTypes.DECIMAL(2, 1),
+    },
+    price: {
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
-    created_on: {
+    selling_price: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    timestamp: {
+      allowNull: false,
       type: DataTypes.DATE,
+      notNull: true,
       defaultValue: DataTypes.NOW,
     },
-    updated_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
+  },
+  {
+    underscored: true,
+    timestamps: true,
   });
   Product.associate = (models) => {
     Product.hasMany(models.ordered_items, {

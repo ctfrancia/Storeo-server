@@ -7,20 +7,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       unique: true,
     },
-    property: {
+    property_name: {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    created_on: {
+    units: {
       allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      type: DataTypes.STRING,
     },
-    updated_on: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
+  },
+  {
+    underscored: true,
+    timestamps: true,
   });
 
   CategoryProperties.associate = (models) => {

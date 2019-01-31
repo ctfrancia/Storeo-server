@@ -11,18 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    product_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    created_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    updated_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
+  },
+  {
+    underscored: true,
+    timestamps: true,
   });
   return pP;
 };

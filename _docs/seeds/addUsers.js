@@ -1,7 +1,7 @@
 const faker = require('faker');
 
 const createFakeUser = () => ({
-  u_password: faker.internet.password(),
+  password: faker.internet.password(),
   auth_token: faker.random.uuid(),
   email: faker.internet.email(),
   ROLE: faker.random.boolean(),

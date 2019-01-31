@@ -19,18 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       notNull: true,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      defaultValue: null,
-    },
-    timestamp: {
-      type: DataTypes.DATE,
-      notNull: true,
-      defaultValue: DataTypes.NOW,
-    },
   },
   {
-    timestamps: false,
+    underscored: true,
+    timestamps: true,
   });
   Order.associate = (models) => {
     Order.hasMany(models.ordered_items, {

@@ -2,7 +2,7 @@
 /* eslint-disable */
 exports.up = async (knex, Promise) => {
   await knex.schema
-  .createTable('cateories', categories =>{
+  .createTable('categories', categories =>{
     categories
       .increments('id').primary()
       .string('name');

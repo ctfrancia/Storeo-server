@@ -3,15 +3,15 @@ const faker = require('faker');
 const createFakeProducts = () => ({
   name: faker.commerce.productName(),
   description: faker.lorem.sentence(),
-  timestamp: faker.date.recent(),
-  image1: JSON.stringify(`${faker.image.imageUrl()}`),
-  image2: JSON.stringify(`${faker.image.imageUrl()}`),
-  image3: JSON.stringify(`${faker.image.imageUrl()}`),
-  price: faker.commerce.price(),
-  discount: faker.random.number(100),
   tags: JSON.stringify(`${faker.commerce.productAdjective()},
-        ${faker.commerce.productAdjective()},
-        ${faker.commerce.productAdjective()}`),
+  ${faker.commerce.productAdjective()},
+  ${faker.commerce.productAdjective()}`),
+  timestamp: faker.date.recent(),
+  image: JSON.stringify(`${faker.image.imageUrl()}`),
+  images: JSON.stringify(`${faker.image.imageUrl()},
+  ${faker.image.imageUrl()}`),
+  discount: faker.random.number(100),
+  price: faker.commerce.price(),
   selling_price: faker.random.number(100),
 });
 const fakeProducts = [];
@@ -26,5 +26,5 @@ exports.seed = (knex, Promise) => (
   // Deletes ALL existing entries
   knex('products')
     .del()
-    .then(() => knex('products').insert(fakeProducts))
+    .then(() => (knex('products').insert(fakeProducts)))
 );

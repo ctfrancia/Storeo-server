@@ -1,7 +1,7 @@
 const faker = require('faker');
 
 const createFakeCategoriesProperties = () => ({
-  property: faker.commerce.productAdjective(),
+  property_name: faker.commerce.productAdjective(),
   units: faker.finance.currencyName(),
 });
 const fakeCategoriesProperties = [];
