@@ -7,9 +7,25 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       unique: true,
     },
-    property_value: {
-      allowNull: false,
+    category_id: {
+      allowNull: true,
+      type: DataTypes.INTEGER,
+    },
+    property_name: {
+      allowNull: true,
       type: DataTypes.STRING,
+    },
+    units: {
+      allowNull: true,
+      type: DataTypes.STRING,
+    },
+    //  old structure
+    // property_value: {
+    //   allowNull: true,
+    //   type: DataTypes.STRING,
+    // },
+    product_variants: {
+      type: DataTypes.JSON,
     },
     /* eslint-disable */
     'created_at': {
