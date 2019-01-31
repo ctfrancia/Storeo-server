@@ -1,5 +1,6 @@
 import express from 'express';
 import getAllCategories from '../Controllers/AdminControllers/admin.controllers';
+import createNewCategory from '../Controllers/AdminControllers/createNewCategory';
 
 const router = express.Router();
 
@@ -12,30 +13,28 @@ module.exports = router;
 //         ADMIN ROUTES
 //= ===============================
 
-// PRODUCTS
-
+//  Products
 // get /admin/products  - Get All Products
 // get /admin/products/cat/:categoryId  - Get All Products from the Category
 
-// SPECIFIC PRODUCT
+// Specific Products
 // post /admin/products/ - Create new Product
-// get /admin/products/:productId
-// put /admin/products/:productId
-// delete /admin/products/:productId
+// get /admin/products/:productId - Get Product By Id
+// put /admin/products/:productId  -  Update Product Info
+// delete /admin/products/:productId  - Delete a Product
 
-// ORDERS
+// Orders
 // get /admin/orders  Get All Orders
 
-// CATEGORIES
+// Categories
 // get /admin/categories
 
-// SPECIFIC CATEGORY
-// post /admin/categories/:categoryId
-// put /admin/categories/:categoryId
+// Specific Category
+router.post('/categories', createNewCategory); //  /admin/categories/:categoryId
 // delete /admin/categories/:categoryId
 
-// LOGIN
+// Login
 // post /admin/login
 
-// SIGNUP
+// Signup
 // post /admin/signup
