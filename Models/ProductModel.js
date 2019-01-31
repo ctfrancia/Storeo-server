@@ -42,6 +42,16 @@ module.exports = (sequelize, DataTypes) => {
       notNull: true,
       defaultValue: DataTypes.NOW,
     },
+    /* eslint-disable */
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  /* eslint-enable */
   },
   {
     underscored: true,
@@ -51,13 +61,13 @@ module.exports = (sequelize, DataTypes) => {
     Product.hasMany(models.ordered_items, {
       onDelete: 'CASCADE',
       foreignKey: {
-        allowNull: false,
+        // allowNull: false,
       },
     });
     Product.hasMany(models.product_properties, {
       onDelete: 'CASCADE',
       foreignKey: {
-        allowNull: false,
+        // allowNull: false,
       },
     });
   };

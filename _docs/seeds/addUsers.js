@@ -10,7 +10,7 @@ const createFakeUser = () => ({
   country: faker.address.country(),
   address: faker.address.streetAddress(),
   zip: faker.address.zipCode(),
-  phone: faker.phone.phoneNumber(),
+  phone: faker.random.number(10),
 });
 const fakeUsers = [];
 const desiredAmout = 50;

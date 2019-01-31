@@ -19,6 +19,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       notNull: true,
     },
+    /* eslint-disable */
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  /* eslint-enable */
   },
   {
     underscored: true,
@@ -28,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     Order.hasMany(models.ordered_items, {
       onDelete: 'CASCADE',
       foreginKey: {
-        allowNull: false,
+        // allowNull: false,
       },
     });
   };

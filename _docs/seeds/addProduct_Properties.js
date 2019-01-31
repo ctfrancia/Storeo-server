@@ -12,7 +12,7 @@ for (let i = 0; i < desiredAmout; i++) {
 /* eslint-disable-next-line */
 exports.seed = (knex, Promise) => (
   // Deletes ALL existing entries
-  knex('product_property_values')
+  knex('product_properties')
     .del()
-    .then(() => knex('product_property_values').insert(fakePV))
+    .then(() => knex('product_properties').insert(fakePV))
 );
