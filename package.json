@@ -27,11 +27,13 @@
   },
   "homepage": "https://github.com/ctfrancia/Storeo-server#readme",
   "dependencies": {
+    "atob": "^2.1.2",
     "bcrypt": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "jsonwebtoken": "^8.4.0",
     "knex": "^0.16.3",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
