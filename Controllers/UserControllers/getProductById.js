@@ -1,7 +1,7 @@
 import Product from '../../Models/ProductModel';
 import sequelize from '../../db';
 
-const getProductsById = async (req, res) => {
+const getProductById = async (req, res) => {
   try {
     const id = req.params.productId;
     const product = await sequelize.query(`SELECT * FROM products WHERE id = ${id}`, { model: Product });
@@ -17,4 +17,4 @@ const getProductsById = async (req, res) => {
   }
 };
 
-export default getProductsById;
+export default getProductById;
