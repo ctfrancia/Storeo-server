@@ -14,16 +14,17 @@ module.exports = router;
 
 // PRODUCTS
 
-// get /admin/products
-// post /admin/products/
+// get /admin/products  - Get All Products
+// get /admin/products/cat/:categoryId  - Get All Products from the Category
 
 // SPECIFIC PRODUCT
+// post /admin/products/ - Create new Product
 // get /admin/products/:productId
 // put /admin/products/:productId
 // delete /admin/products/:productId
 
 // ORDERS
-// get /admin/orders
+// get /admin/orders  Get All Orders
 
 // CATEGORIES
 // get /admin/categories
