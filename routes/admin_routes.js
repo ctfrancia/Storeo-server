@@ -4,6 +4,7 @@ import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import deleteCategory from '../Controllers/AdminControllers/deleteCategory';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductById from '../Controllers/UserControllers/getProductById';
+import deleteProductById from '../Controllers/AdminControllers/deleteProductById';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
 
@@ -16,11 +17,11 @@ const router = express.Router();
 router.get('/products', getAllProducts);
 router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
-// get /admin/products/cat/:categoryId  - Get All Products from the Category
-
 // post /admin/products/ - Create new Product
 // put /admin/products/:productId
-// delete /admin/products/:productId
+
+router.delete('/products/:productId', deleteProductById);
+
 
 // Orders
 // get /admin/orders  Get All Orders

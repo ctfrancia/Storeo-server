@@ -1,8 +1,7 @@
 import Sequelize from 'sequelize';
-
+import sequelize from '../../db';
 import Category from '../../Models/CategoryModel';
 import CategoryProperties from '../../Models/Category_PropertiesModel';
-import sequelize from '../../db';
 
 
 const createNewCategory = async (req, res) => {

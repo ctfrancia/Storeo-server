@@ -7,11 +7,12 @@ const postNewOrder = async (req, res) => {
 // Deconstruct the `req` object, & rename values to
 // camelCase notation [ (from) req_prop_name: (to) reqPropName]
   const {
-    order_num: orderNum,
     order_status: orderStatus,
     special_instructions: specInstructions,
     user_id: userId,
   } = req.body;
+
+  const orderNum = 'PENDING TO MAKE DYNAMIC UUID';
 
   try {
     const result = await sequelize.query(
