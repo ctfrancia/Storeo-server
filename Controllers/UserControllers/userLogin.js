@@ -13,7 +13,7 @@ const userLogin = async (req, res) => {
   if (authType === 'Basic') {
     const [email, password] = atob(encodedString).split(':');
 
-    const [user] = await sequelize.query('SELECT id, first_name, last_name, password FROM users_new WHERE email = :email',
+    const [user] = await sequelize.query('SELECT id, first_name, last_name, password FROM users WHERE email = :email',
       { replacements: { email }, type: sequelize.QueryTypes.SELECT });
 
     log('user is ', user);
@@ -28,7 +28,7 @@ const userLogin = async (req, res) => {
         const token = jwt.sign({ email }, jwtSecret);
         // Insert token for user in the DB
         await sequelize.query(
-          'UPDATE users_new SET auth_token = ? WHERE email = ?',
+          'UPDATE users SET auth_token = ? WHERE email = ?',
           {
             model: User,
             replacements: [token, email],

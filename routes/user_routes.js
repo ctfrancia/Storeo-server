@@ -8,6 +8,8 @@ import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
 import insertAddress from '../Controllers/UserControllers/insertAddress';
 import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
+import authMiddleware from '../Middlewares/authorization';
+import gateMiddleware from '../Middlewares/gate';
 
 const router = express.Router();
 
@@ -20,7 +22,7 @@ router.get('/products/cat/:categoryId', getProductsByCategoryId);
 router.get('/categories', getAllCategories);
 
 // Orders
-router.post('/orders', postNewOrder);
+router.post('/orders', authMiddleware, gateMiddleware, postNewOrder);
 
 // Signup
 router.post('/signup', userSignup);
@@ -29,10 +31,10 @@ router.post('/signup', userSignup);
 router.get('/login', userLogin);
 
 // Add Address
-router.post('/address', insertAddress);
+router.post('/address', authMiddleware, gateMiddleware, insertAddress);
 
 //  Previous Orders
-router.get('/orders', getAOrdersFromUser);
+router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
 // SEARCH
 router.post('/address', insertAddress);

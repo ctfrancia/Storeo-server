@@ -23,7 +23,7 @@ const userSignup = async (req, res, next) => {
         .send('Password must be 8 characters or longer.');
       next();
     } else {
-      const user = await sequelize.query('SELECT * FROM users_new WHERE email = :email',
+      const user = await sequelize.query('SELECT * FROM users WHERE email = :email',
         { replacements: { email }, type: sequelize.QueryTypes.SELECT });
 
       log('Retrieved user', user);
@@ -36,7 +36,7 @@ const userSignup = async (req, res, next) => {
       } else {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await sequelize.query(
-          `INSERT INTO users_new (first_name, last_name, email, password)
+          `INSERT INTO users (first_name, last_name, email, password)
            VALUES (:firstname, :lastname, :email, :password)`,
           {
             model: User,
