@@ -1,4 +1,8 @@
+import Sequelize from 'sequelize';
 import sequelize from '../../db';
+import { db } from '../../Models';
+
+const { Category } = db;
 
 const getAllCategories = async (req, res) => {
   try {
@@ -8,6 +12,10 @@ const getAllCategories = async (req, res) => {
        GROUP_CONCAT(category_properties.units) AS property_units
        FROM categories, category_properties
        WHERE categories.id = category_properties.category_id GROUP BY categories.id;`,
+      {
+        model: Category,
+        type: Sequelize.QueryTypes.SELECT,
+      },
     );
     res
       .status(200)

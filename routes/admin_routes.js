@@ -1,8 +1,10 @@
 import express from 'express';
+import createNewCategory from '../Controllers/AdminControllers/createNewCategory';
 import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import deleteCategory from '../Controllers/AdminControllers/deleteCategory';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
 import getProductById from '../Controllers/UserControllers/getProductById';
+import deleteProductById from '../Controllers/AdminControllers/deleteProductById';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/admin.postNewProduct';
@@ -17,27 +19,27 @@ router.post('/newproduct', postNewProduct);
 router.get('/products', getAllProducts);
 router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
-// get /admin/products/cat/:categoryId  - Get All Products from the Category
-
+router.delete('/products/:productId', deleteProductById);
 // post /admin/products/ - Create new Product
 // put /admin/products/:productId
-// delete /admin/products/:productId
 
-// ORDERS
+
+// Orders
 // get /admin/orders  Get All Orders
 
-// CATEGORIES
+// Categories
 router.get('/categories', getAllCategories);
-router.delete('/categories/:categoryId', deleteCategory);
+router.post('/categories', createNewCategory);
 router.put('/categories/:categoryId', updateCategory);
+router.delete('/categories/:categoryId', deleteCategory);
 
 // SPECIFIC CATEGORY
 // post /admin/categories/:categoryId
 
-// LOGIN
+// Login
 // post /admin/login
 
-// SIGNUP
+// Signup
 // post /admin/signup
 
 module.exports = router;
