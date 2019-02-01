@@ -31,10 +31,11 @@ router.get('/login', userLogin);
 // Add Address
 router.post('/address', insertAddress);
 
+//  Previous Orders
+router.get('/orders', getAOrdersFromUser);
+
 // SEARCH
 // post /search
 
-//  Previous Orders
-router.get('/orders', getAOrdersFromUser);
 
 module.exports = router;
