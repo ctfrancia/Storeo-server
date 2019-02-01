@@ -2,7 +2,8 @@ import sequelize from '../../db';
 
 const insertAddress = async (req, res) => {
   try {
-    const { userId } = req.body;
+    //  get user id from req.body renaming it userId
+    const { id: userId } = req.body.user;
     if (userId) {
       const {
         country,
