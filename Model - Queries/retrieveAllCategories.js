@@ -16,7 +16,6 @@ const retrieveAllCategories = async () => {
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  console.log('categories is', categories);
   const formattedCategories = categories.map(category => Object.assign(category,
     {
       property_names: category.property_names.split(','),
