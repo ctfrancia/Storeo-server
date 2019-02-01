@@ -6,8 +6,8 @@ const QUERIES = {
       VALUES( :name, :description, :price, ${CONSTANTS.vatRate},  :discount, :tags, :images, :categoryId)
       `,
   insertIntoProductProperties: `INSERT INTO product_properties
-    (category_id, property_name, units, property_value)
-    VALUES ( :categoryId, :propertyName, :units, :propertyValue)
+            (category_id, property_name, units, property_value)
+    VALUES ( :category_id, :property_name, :units, :property_value)
   `,
 };
 
