@@ -1,19 +1,9 @@
-import Sequelize from 'sequelize';
-import sequelize from '../../db';
-import { db } from '../../Models';
-
-const { Product } = db;
+import retrieveProductsByCategoryId from '../../Model - Queries/retrieveProductsByCategoryId';
 
 const getProductsByCategoryId = async (req, res) => {
   try {
-    const id = req.params.categoryId;
-    const products = await sequelize.query(
-      `SELECT * FROM products WHERE category_id = ${id}`,
-      {
-        model: Product,
-        type: Sequelize.QueryTypes.SELECT,
-      },
-    );
+    const { categoryId } = req.params;
+    const products = await retrieveProductsByCategoryId(categoryId);
     res
       .status(200)
       .send(products);

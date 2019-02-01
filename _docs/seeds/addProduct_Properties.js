@@ -14,5 +14,5 @@ exports.seed = (knex, Promise) => (
   // Deletes ALL existing entries
   knex('product_properties')
     .del()
-    .then(() => knex('product_properties').insert(fakePV))
+    .then(() => (knex('product_properties').insert(fakePV)))
 );

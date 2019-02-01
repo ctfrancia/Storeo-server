@@ -7,8 +7,8 @@ const createFakeProducts = () => ({
   ${faker.commerce.productAdjective()},
   ${faker.commerce.productAdjective()}`),
   images: JSON.stringify(`${faker.image.imageUrl()},
-          ${faker.image.imageUrl()}`),
-  discount: faker.random.number(0),
+  ${faker.image.imageUrl()}`),
+  discount: faker.random.number(25),
   price: faker.commerce.price(),
 });
 const fakeProducts = [];
