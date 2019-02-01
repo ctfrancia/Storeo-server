@@ -41,7 +41,6 @@ const updateProduct = async (req, res) => {
         type: sequelize.QueryTypes.UPDATE,
       });
     if (!fkProductId) res.status(400).send('missing product_id');
-    console.log(fkProductId);
 
     await Promise.all(
       productProperties.map(obj => sequelize
