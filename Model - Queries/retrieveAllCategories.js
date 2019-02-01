@@ -4,8 +4,8 @@ import { db } from '../Models';
 
 const { Category } = db;
 
-const retrieveAllCategories = () => {
-  const categories = sequelize.query(
+const retrieveAllCategories = async () => {
+  const categories = await sequelize.query(
     `SELECT categories.id, categories.name, 
      GROUP_CONCAT(category_properties.property_name) AS property_names, 
      GROUP_CONCAT(category_properties.units) AS property_units
@@ -16,7 +16,13 @@ const retrieveAllCategories = () => {
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  return categories;
+  console.log('categories is', categories);
+  const formattedCategories = categories.map(category => Object.assign(category,
+    {
+      property_names: category.property_names.split(','),
+      property_units: category.property_units.split(','),
+    }));
+  return formattedCategories;
 };
 
 export default retrieveAllCategories;
