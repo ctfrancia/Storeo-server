@@ -1,7 +1,7 @@
 const faker = require('faker');
 
 const createFakeProductPropertyValues = () => ({
-  property_value: faker.commerce.productAdjective(),
+  property_name: faker.commerce.productAdjective(),
 });
 const fakePV = [];
 const desiredAmout = 50;

@@ -6,13 +6,10 @@ const createFakeProducts = () => ({
   tags: JSON.stringify(`${faker.commerce.productAdjective()},
   ${faker.commerce.productAdjective()},
   ${faker.commerce.productAdjective()}`),
-  timestamp: faker.date.recent(),
-  image: JSON.stringify(`${faker.image.imageUrl()}`),
   images: JSON.stringify(`${faker.image.imageUrl()},
-  ${faker.image.imageUrl()}`),
+          ${faker.image.imageUrl()}`),
   discount: faker.random.number(0),
   price: faker.commerce.price(),
-  selling_price: faker.random.number(100),
 });
 const fakeProducts = [];
 const desiredAmout = 50;

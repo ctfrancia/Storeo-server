@@ -25,7 +25,7 @@ const createNewCategory = async (req, res) => {
   let insertError = false;
 
   // Insert all the category properties from the array - dynamicaly
-  // Promise.all returns a single promise that resolves when all requests initiated by `map` are finished
+  // Promise.all returns a single promise that resolves when all requests are finished
   await Promise.all(categoryProperties.map(async (propertObj) => {
     const { propertyName, units } = propertObj;
     try {
@@ -48,7 +48,7 @@ const createNewCategory = async (req, res) => {
   }));
 
   const requestStatus = insertError ? 500 : 201;
-  const responseMessage = 201 ? 'OK' : 'Request Error';
+  const responseMessage = insertError ? 'Request Error' : 'OK';
   res
     .status(requestStatus)
     .send(responseMessage);
