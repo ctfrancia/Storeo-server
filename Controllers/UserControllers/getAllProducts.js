@@ -2,7 +2,8 @@ import retrieveAllProducts from '../../Model - Queries/retrieveAllProducts';
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = retrieveAllProducts();
+    const products = await retrieveAllProducts();
+
     res
       .status(200)
       .send(products);

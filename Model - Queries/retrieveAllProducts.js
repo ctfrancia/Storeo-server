@@ -5,18 +5,23 @@ import { db } from '../Models';
 const { Product } = db;
 
 const retrieveAllProducts = async () => {
-  try {
-    const products = await sequelize.query(
-      'SELECT * FROM products',
-      {
-        model: Product,
-        type: Sequelize.QueryTypes.SELECT,
-      },
-    );
-    return products;
-  } catch (err) {
-    throw Error('Error in retrieveAllProducts Model');
-  }
+  const products = await sequelize.query(
+    `SELECT products.*,
+  GROUP_CONCAT(product_properties.property_name) as property_names,
+  GROUP_CONCAT(product_properties.product_variants) as property_values
+  FROM products, product_properties
+  WHERE products.id = product_properties.product_id GROUP BY products.id`,
+    {
+      model: Product,
+      type: Sequelize.QueryTypes.SELECT,
+    },
+  );
+  const formattedProducts = products.map(product => Object.assign(product,
+    {
+      property_names: product.property_names.split(','),
+      property_values: product.property_values.split(','),
+    }));
+  return formattedProducts;
 };
 
 export default retrieveAllProducts;
