@@ -2,7 +2,8 @@ import sequelize from '../../db';
 
 const getOrdersFromUser = async (req, res) => {
   try {
-    const { userId } = req.body;
+    //  get user id from req.body renaming it userId
+    const { id: userId } = req.body;
     if (userId) {
       const [previousOrders] = await sequelize.query(`SELECT * FROM orders WHERE user_id = ${userId}`);
 

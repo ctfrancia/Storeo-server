@@ -15,7 +15,7 @@ const authMiddleware = async (req, res, next) => {
       const jwtSecret = process.env.JWT_SECRET;
       try {
         const { email } = await jwt.verify(token, jwtSecret);
-        const user = await sequelize.query('SELECT * FROM users WHERE email = :email',
+        const [user] = await sequelize.query('SELECT * FROM users WHERE email = :email',
           {
             model: User,
             replacements: {
