@@ -1,6 +1,5 @@
 const gateMiddleware = (req, res, next) => {
   if (req.body.user) {
-    console.log(req.body.user);
     next();
   } else {
     res
