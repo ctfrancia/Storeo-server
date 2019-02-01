@@ -8,11 +8,13 @@ import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
 import insertAddress from '../Controllers/UserControllers/insertAddress';
 import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
+import authMiddleware from '../Middlewares/authorization';
+import gateMiddleware from '../Middlewares/gate';
 
 const router = express.Router();
 
 //  Products
-router.get('/products', getAllProducts);
+router.get('/products', authMiddleware, gateMiddleware, getAllProducts);
 router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
 
