@@ -37,7 +37,7 @@ router.post('/address', authMiddleware, gateMiddleware, insertAddress);
 router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
 // SEARCH
-// post /search
+router.post('/address', insertAddress);
 
 
 module.exports = router;

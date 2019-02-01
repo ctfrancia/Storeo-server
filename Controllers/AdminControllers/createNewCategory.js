@@ -3,6 +3,20 @@ import sequelize from '../../db';
 import Category from '../../Models/CategoryModel';
 import CategoryProperties from '../../Models/Category_PropertiesModel';
 
+const insertPropertyIntoCategory = (propertObj, categoryId) => {
+  const { propertyName, units } = propertObj;
+  return sequelize.query(
+    `INSERT INTO category_properties 
+    (property_name, units, category_id )
+    VALUES ( :propertyName, :units, :newCategoryId )
+    `,
+    {
+      model: CategoryProperties,
+      replacements: { propertyName, units, categoryId },
+      type: Sequelize.QueryTypes.INSERT,
+    },
+  );
+};
 
 const createNewCategory = async (req, res) => {
   const { categoryProperties, name } = req.body;
@@ -21,36 +35,24 @@ const createNewCategory = async (req, res) => {
 
   // Get the id of the created category
   const newCategoryId = newCategory[0];
-  let insertError = false;
+
+  let requestStatus = 201;
+  let responseMessage;
 
   // Insert all the category properties from the array - dynamicaly
   // Promise.all returns a single promise that resolves when all requests are finished
-  await Promise.all(categoryProperties.map(async (propertObj) => {
-    const { propertyName, units } = propertObj;
-    try {
-      await sequelize.query(
-        `INSERT INTO category_properties 
-        (property_name, units, category_id )
-        VALUES ( :propertyName, :units, :newCategoryId )
-        `,
-        {
-          model: CategoryProperties,
-          replacements: { propertyName, units, newCategoryId },
-          type: Sequelize.QueryTypes.INSERT,
-        },
-      );
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error in createNewCategory controller', error);
-      insertError = true;
-    }
-  }));
+  try {
+    await Promise.all(
+      categoryProperties.map(catProperty => insertPropertyIntoCategory(catProperty, newCategoryId)),
+    );
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error in createNewCategory controller', error);
+    requestStatus = 500;
+    responseMessage = { error: 'Request Error' };
+  }
 
-  const requestStatus = insertError ? 500 : 201;
-  const responseMessage = insertError ? 'Request Error' : 'OK';
-  res
-    .status(requestStatus)
-    .send(responseMessage);
+  res.status(requestStatus).send(responseMessage);
 };
 
 export default createNewCategory;

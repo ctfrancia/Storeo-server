@@ -19,13 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       type: DataTypes.STRING,
     },
-    //  old structure
-    // property_value: {
-    //   allowNull: true,
-    //   type: DataTypes.STRING,
-    // },
-    product_variants: {
-      type: DataTypes.JSON,
+    property_value: {
+      allowNull: true,
+      type: DataTypes.STRING,
     },
     /* eslint-disable */
     'created_at': {
