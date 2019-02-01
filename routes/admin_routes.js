@@ -17,20 +17,19 @@ const router = express.Router();
 router.get('/products', getAllProducts);
 router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
+router.delete('/products/:productId', deleteProductById);
 // post /admin/products/ - Create new Product
 // put /admin/products/:productId
-
-router.delete('/products/:productId', deleteProductById);
 
 
 // Orders
 // get /admin/orders  Get All Orders
 
-// CATEGORIES
-router.post('/categories', createNewCategory);
+// Categories
 router.get('/categories', getAllCategories);
-router.delete('/categories/:categoryId', deleteCategory);
+router.post('/categories', createNewCategory);
 router.put('/categories/:categoryId', updateCategory);
+router.delete('/categories/:categoryId', deleteCategory);
 
 // SPECIFIC CATEGORY
 // post /admin/categories/:categoryId

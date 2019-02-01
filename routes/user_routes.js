@@ -32,7 +32,7 @@ router.get('/login', userLogin);
 router.post('/address', insertAddress);
 
 // SEARCH
-// post /search
+router.post('/address', insertAddress);
 
 //  Previous Orders
 router.get('/orders', getAOrdersFromUser);
