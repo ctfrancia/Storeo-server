@@ -8,6 +8,7 @@ import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
 import insertAddress from '../Controllers/UserControllers/insertAddress';
 import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
+import searchProducts from '../Controllers/UserControllers/searchProducts';
 
 const router = express.Router();
 
@@ -34,8 +35,8 @@ router.post('/address', insertAddress);
 //  Previous Orders
 router.get('/orders', getAOrdersFromUser);
 
-// SEARCH
-router.post('/address', insertAddress);
+// Search
+router.get('/search', searchProducts);
 
 
 module.exports = router;
