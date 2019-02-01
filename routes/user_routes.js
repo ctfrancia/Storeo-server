@@ -8,6 +8,7 @@ import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
 import updateAddress from '../Controllers/UserControllers/updateAddress';
 import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
+import searchProducts from '../Controllers/UserControllers/searchProducts';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
@@ -36,6 +37,8 @@ router.post('/address', authMiddleware, gateMiddleware, updateAddress);
 //  Previous Orders
 router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
+// Search
+router.get('/search', searchProducts);
 // SEARCH
 // router.post('/address', insertAddress);
 
