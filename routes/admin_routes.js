@@ -1,4 +1,5 @@
 import express from 'express';
+import createNewCategory from '../Controllers/AdminControllers/createNewCategory';
 import getAllCategories from '../Controllers/UserControllers/getAllCategories';
 import deleteCategory from '../Controllers/AdminControllers/deleteCategory';
 import getAllProducts from '../Controllers/UserControllers/getAllProducts';
@@ -21,10 +22,11 @@ router.get('/products/cat/:categoryId', getProductsByCategoryId);
 // put /admin/products/:productId
 // delete /admin/products/:productId
 
-// ORDERS
+// Orders
 // get /admin/orders  Get All Orders
 
 // CATEGORIES
+router.post('/categories', createNewCategory);
 router.get('/categories', getAllCategories);
 router.delete('/categories/:categoryId', deleteCategory);
 router.put('/categories/:categoryId', updateCategory);
@@ -32,10 +34,10 @@ router.put('/categories/:categoryId', updateCategory);
 // SPECIFIC CATEGORY
 // post /admin/categories/:categoryId
 
-// LOGIN
+// Login
 // post /admin/login
 
-// SIGNUP
+// Signup
 // post /admin/signup
 
 module.exports = router;
