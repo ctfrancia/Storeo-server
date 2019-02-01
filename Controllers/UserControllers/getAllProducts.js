@@ -1,18 +1,8 @@
-import Sequelize from 'sequelize';
-import sequelize from '../../db';
-import { db } from '../../Models';
-
-const { Product } = db;
+import retrieveAllProducts from '../../Model - Queries/retrieveAllProducts';
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await sequelize.query(
-      'SELECT * FROM products',
-      {
-        model: Product,
-        type: Sequelize.QueryTypes.SELECT,
-      },
-    );
+    const products = retrieveAllProducts();
     res
       .status(200)
       .send(products);
