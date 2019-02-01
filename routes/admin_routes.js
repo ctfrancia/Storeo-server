@@ -8,6 +8,7 @@ import deleteProductById from '../Controllers/AdminControllers/deleteProductById
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/admin.postNewProduct';
+import updateProduct from '../Controllers/AdminControllers/admin.updateProduct';
 
 const router = express.Router();
 //= ===============================
@@ -20,9 +21,7 @@ router.get('/products', getAllProducts);
 router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
 router.delete('/products/:productId', deleteProductById);
-// post /admin/products/ - Create new Product
-// put /admin/products/:productId
-
+router.put('/products/:productId', updateProduct);
 
 // Orders
 // get /admin/orders  Get All Orders
