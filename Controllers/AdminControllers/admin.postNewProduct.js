@@ -44,7 +44,7 @@ const postNewProduct = async (req, res) => {
         wasWritten = true;
       })
       .catch((e) => {
-      /* eslint-disable-next-line */
+        /* eslint-disable-next-line */
         console.log(e);
         wasWritten = false;
       });
