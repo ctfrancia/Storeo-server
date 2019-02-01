@@ -1,19 +1,9 @@
-import Sequelize from 'sequelize';
-import sequelize from '../../db';
-import { db } from '../../Models';
-
-const { Product } = db;
+import retrieveProductById from '../../Model - Queries/retrieveProductById';
 
 const getProductById = async (req, res) => {
   try {
-    const id = req.params.productId;
-    const product = await sequelize.query(
-      `SELECT DISTINCT * FROM products WHERE id = ${id}`,
-      {
-        model: Product,
-        type: Sequelize.QueryTypes.SELECT,
-      },
-    );
+    const { productId } = req.params;
+    const product = await retrieveProductById(productId);
     res
       .status(200)
       .send(product);
