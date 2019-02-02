@@ -8,10 +8,11 @@ const { Product } = db;
 const retrieveAllProducts = async () => {
   const products = await sequelize.query(
     `SELECT products.*,
-  GROUP_CONCAT(product_properties.property_name) as property_names,
-  GROUP_CONCAT(product_properties.property_value) as property_values
-  FROM products, product_properties
-  WHERE products.id = product_properties.product_id GROUP BY products.id`,
+      GROUP_CONCAT(product_properties.property_name) as property_names,
+      GROUP_CONCAT(product_properties.property_value) as property_values
+        FROM products
+          LEFT JOIN product_properties ON product_properties.product_id = products.id
+          GROUP BY products.id;`,
     {
       model: Product,
       type: Sequelize.QueryTypes.SELECT,
