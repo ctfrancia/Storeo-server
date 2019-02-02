@@ -1,7 +1,7 @@
 const faker = require('faker');
 
 const createFakeOrderedItems = () => ({
-  quantity: faker.random.number(),
+  quantity: faker.random.number(100),
 });
 const fakeOrderedItems = [];
 const desiredAmout = 50;
