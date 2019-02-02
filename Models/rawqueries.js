@@ -3,7 +3,9 @@ import CONSTANTS from '../_CONSTANTS';
 const QUERIES = {
   insertIntoProducts: `INSERT INTO products
             (  name,  description,  price,  vat_rate,  discount,  tags,  images,  category_id)
-      VALUES( :name, :description, :price, ${CONSTANTS.vatRate},  :discount, :tags, :images, :category_id)
+      VALUES( :name, :description, :price, ${
+  CONSTANTS.vatRate
+},  :discount, :tags, :images, :category_id)
       `,
   insertIntoProductProperties: `INSERT INTO product_properties
             (category_id, property_name, units, property_value, product_id)
@@ -25,6 +27,9 @@ const QUERIES = {
                             units = :units,
                             property_value = :property_value
                             WHERE product_id = :productId;`,
+  deleteProductById: 'DELETE FROM products WHERE id = :productId',
+  deleteCategoryById: `DELETE FROM categories
+                        WHERE id = :id`,
 };
 
 export default QUERIES;

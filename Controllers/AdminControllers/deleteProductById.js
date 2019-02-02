@@ -1,22 +1,13 @@
-import Sequelize from 'sequelize';
-import Product from '../../Schemas/ProductModel';
-import sequelize from '../../db';
+import productModel from '../../Models/AdminModels/productModel';
 
 const deleteProductById = async (req, res) => {
   const { productId } = req.params;
 
   try {
-    await sequelize.query(
-      'DELETE FROM products WHERE id = :productId',
-      {
-        model: Product,
-        replacements: { productId },
-        type: Sequelize.QueryTypes.DELETE,
-      },
-    );
+    await productModel.deleteProduct(productId);
     res
       .status(204)
-      .end();
+      .end('Delete successfull');
   } catch (error) {
     // eslint-disable-next-line
     console.error('Error in the deleteProducById controller.');
