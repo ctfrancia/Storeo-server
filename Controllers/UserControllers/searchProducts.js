@@ -5,25 +5,44 @@ import fn from '../../Helpers/utils';
 
 const { Product } = db;
 
-const searchProducts = async (req, res) => {
-  const { q, category } = req.query;
+const searchProductsQuery = async (queryPhrase, categoryName) => {
   const replacements = [];
-  const queryArray = q.split(' ').filter(str => str.length > 0);
+  const queryArray = queryPhrase.split(' ').filter(str => str.length > 0);
 
+  // First part of the query string
   let query = 'SELECT * FROM products WHERE';
+  let categoryId;
 
-  if (category) {
+  // If category name is available retireve that categories id
+  if (categoryName) {
+    const categoryIdObject = await sequelize.query(
+      'SELECT id FROM categories WHERE name = :categoryName',
+      { model: Product, replacements: { categoryName }, type: Sequelize.QueryTypes.SELECT },
+    );
+    categoryId = categoryIdObject[0].id;
+
+    // push `categoryId` as first item in `replacements` array
+    replacements.push(categoryId);
     query += ' category_id LIKE ?';
-    replacements.push(1);
-  } else if (!category) {
+  } else if (!categoryName) {
     query += ' category_id LIKE "%"';
   }
 
   queryArray.forEach((word) => {
     query = `${query} AND (name LIKE ? OR description LIKE ? )`;
-    replacements.push(`%${word}%`);
-    replacements.push(`%${word}%`);
+    // push the word in replacements array related to both `?` in the query
+    replacements.push(`%${word}%`, `%${word}%`);
   });
+
+  return { query, replacements };
+};
+
+const searchProducts = async (req, res) => {
+  const { q, category } = req.query;
+
+
+  const queryAndReplacements = await searchProductsQuery(q, category);
+  const { query, replacements } = queryAndReplacements;
 
   try {
     const productsArray = await sequelize.query(
@@ -51,15 +70,3 @@ const searchProducts = async (req, res) => {
 
 
 export default searchProducts;
-
-// SELECT * FROM products
-// WHERE
-//   ( name LIKE '%black%' OR description LIKE '%black%' )
-//   AND ( name LIKE '%laptop%' OR description LIKE '%laptop%' )
-//   AND ( categoryId = 12 )
-
-
-// req.params.q.split(' ').map(word => {
-//   replacements.push(word)
-//   replacements.push(word)
-//   `( name LIKE "%?%' OR description LIKE '%?%' )`
