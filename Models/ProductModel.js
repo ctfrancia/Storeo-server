@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
+    selling_price: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
     vat_rate: {
       allowNull: false,
       type: DataTypes.INTEGER,

@@ -1,20 +1,24 @@
 const fn = {};
+const currency = 'EUR';
 
 /* Methods for formatting the product price and discount */
-fn.centsToDecimals = valueInCents => (valueInCents / 100);
+fn.centsToDecimals = valueInCents => Number(valueInCents || 0) / 100;
 
-fn.decimalDiscountToPercents = decimalDiscountNum => decimalDiscountNum * 100;
+fn.decimalDiscountToPercents = decimalDiscountNum => Number(decimalDiscountNum || 0) * 100;
 
 fn.stringifyPercentage = num => `${num} %`;
 
-fn.formatToEuro = num => `${num} €`;
+fn.formatTo = {
+  EUR: num => `${num} €`,
+  USD: num => `${num} $`,
+};
 
 
 /* Iterates over array of Products and formats each Product object */
 const formatPricesAndDiscount = productsArr => productsArr.map((product) => {
   const formatted = Object.assign(product, {
-    price: fn.formatToEuro(fn.centsToDecimals(product.price)),
-    selling_price: fn.formatToEuro(fn.centsToDecimals(product.selling_price)),
+    price: fn.formatTo[`${currency}`](fn.centsToDecimals(product.price)),
+    selling_price: fn.formatTo[`${currency}`](fn.centsToDecimals(product.selling_price)),
     discount: fn.stringifyPercentage(fn.decimalDiscountToPercents(product.discount)),
   });
   return formatted;

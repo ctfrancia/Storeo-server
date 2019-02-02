@@ -14,7 +14,7 @@ const getSearchProducts = async (req, res) => {
         .send(products);
     } catch (err) {
       // eslint-disable-next-line no-console
-      console.log('Error in searchProducts Controller', err);
+      console.log('Error in getSearchProducts Controller', err);
       res
         .status(401)
         .send({ error: 'Search request error.' });
