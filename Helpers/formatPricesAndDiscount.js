@@ -11,7 +11,7 @@ fn.formatToEuro = num => `${num} €`;
 
 
 /* Iterates over array of Products and formats each Product object */
-fn.formatPricesAndDiscount = productsArr => productsArr.map((product) => {
+const formatPricesAndDiscount = productsArr => productsArr.map((product) => {
   const formatted = Object.assign(product, {
     price: fn.formatToEuro(fn.centsToDecimals(product.price)),
     selling_price: fn.formatToEuro(fn.centsToDecimals(product.selling_price)),
@@ -20,4 +20,4 @@ fn.formatPricesAndDiscount = productsArr => productsArr.map((product) => {
   return formatted;
 });
 
-export default fn.formatPricesAndDiscount;
+export default formatPricesAndDiscount;
