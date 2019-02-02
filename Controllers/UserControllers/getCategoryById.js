@@ -2,7 +2,6 @@ import retrieveCategoryById from '../../Model - Queries/retrieveCategoryById';
 
 const getCategoryById = async (req, res) => {
   try {
-    console.log('REQUEST', req.params.categoryId);
     const { categoryId } = req.params;
     const category = await retrieveCategoryById(categoryId);
     res
