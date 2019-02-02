@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from '../../db';
 import { db } from '../../Models';
-import fn from '../../Helpers/utils';
+import formatPricesAndDiscount from '../../Helpers/formatPricesAndDiscount';
 
 const { Product } = db;
 
@@ -54,7 +54,7 @@ const searchProducts = async (req, res) => {
       },
     );
 
-    const formatted = fn.stringifyPricesAndDiscount(productsArray);
+    const formatted = formatPricesAndDiscount(productsArray);
 
     res
       .status(200)
