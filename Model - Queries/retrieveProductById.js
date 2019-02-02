@@ -11,7 +11,7 @@ const retrieveProductById = async (productId) => {
   GROUP_CONCAT(product_properties.property_name) as property_names,
   GROUP_CONCAT(product_properties.property_value) as property_values
   FROM products, product_properties
-  WHERE products.id = ${productId} and products.id = product_properties.product_id GROUP BY products.id;`,
+  WHERE products.id = ${productId} AND products.id = product_properties.product_id GROUP BY products.id;`,
     {
       model: Product,
       type: Sequelize.QueryTypes.SELECT,
