@@ -1,11 +1,11 @@
 import Sequelize from 'sequelize';
-import sequelize from '../../db';
-import { db } from '../../Models';
-import formatPricesAndDiscount from '../../Helpers/formatPricesAndDiscount';
+import sequelize from '../db';
+import { db } from '../Models';
 
 const { Product } = db;
 
 const searchProductsQueryBuilder = async (queryPhrase, categoryName) => {
+  let categoryId;
   const replacements = [];
   const queryArray = queryPhrase.split(' ').filter(str => str.length > 0);
 
@@ -17,26 +17,32 @@ const searchProductsQueryBuilder = async (queryPhrase, categoryName) => {
     FROM products
       LEFT JOIN product_properties ON product_properties.product_id = products.id
       WHERE`;
-  let categoryId;
+
 
   // If category name is available retireve that categories id
   if (categoryName) {
     const categoryIdObject = await sequelize.query(
-      'SELECT id FROM categories WHERE name = :categoryName',
-      { model: Product, replacements: { categoryName }, type: Sequelize.QueryTypes.SELECT },
+      `SELECT id FROM categories 
+      WHERE name = :categoryName`,
+      {
+        model: Product,
+        replacements: { categoryName },
+        type: Sequelize.QueryTypes.SELECT,
+      },
     );
-    categoryId = categoryIdObject[0].id;
-
     // push `categoryId` as first item in `replacements` array
+    categoryId = categoryIdObject[0].id;
     replacements.push(categoryId);
     query += ' products.category_id LIKE ?';
   } else if (!categoryName) {
+    // "%" is a wildcard for searching for product in all categories
     query += ' products.category_id LIKE "%"';
   }
 
   queryArray.forEach((word) => {
-    query = `${query} AND (name LIKE ? OR description LIKE ? )`;
+    // For each word in the query phrase append the string to query and
     // push word in replacements array related to both `?` in the query
+    query = `${query} AND (name LIKE ? OR description LIKE ? )`;
     replacements.push(`%${word}%`, `%${word}%`);
   });
 
@@ -44,27 +50,4 @@ const searchProductsQueryBuilder = async (queryPhrase, categoryName) => {
   return { query, replacements };
 };
 
-const searchProducts = async (req, res) => {
-  const { q, category } = req.query;
-
-  const queryAndReplacements = await searchProductsQueryBuilder(q, category);
-  const { query, replacements } = queryAndReplacements;
-
-  try {
-    const productsArray = await sequelize.query(`${query}`, {
-      model: Product,
-      replacements,
-      type: Sequelize.QueryTypes.SELECT,
-    });
-
-    const formatted = formatPricesAndDiscount(productsArray);
-
-    res.status(200).send(formatted);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log('Error in searchProducts controller', err);
-    res.status(400).send({ error: 'Search request error.' });
-  }
-};
-
-export default searchProducts;
+export default searchProductsQueryBuilder;
