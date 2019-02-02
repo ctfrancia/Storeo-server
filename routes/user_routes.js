@@ -40,9 +40,13 @@ router.post('/address', authMiddleware, gateMiddleware, updateAddress);
 router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
 // Search
+<<<<<<< HEAD
 router.get('/search', getSearchProducts);
 // SEARCH
 // router.post('/address', insertAddress);
 
+=======
+router.get('/search', searchProducts);
+>>>>>>> ae36bbaeb023cf9138b8a1e5573fa4ee88cf4075
 
 module.exports = router;
