@@ -8,6 +8,8 @@ import userSignup from '../Controllers/UserControllers/userSignup';
 import userLogin from '../Controllers/UserControllers/userLogin';
 import updateAddress from '../Controllers/UserControllers/updateAddress';
 import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
+import getSearchProducts from '../Controllers/UserControllers/getSearchProducts';
+import getCategoryById from '../Controllers/UserControllers/getCategoryById';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
@@ -20,6 +22,7 @@ router.get('/products/cat/:categoryId', getProductsByCategoryId);
 
 // Categories
 router.get('/categories', getAllCategories);
+router.get('/categories/:categoryId', getCategoryById);
 
 // Orders
 router.post('/orders', authMiddleware, gateMiddleware, postNewOrder);
@@ -36,8 +39,7 @@ router.post('/address', authMiddleware, gateMiddleware, updateAddress);
 //  Previous Orders
 router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
-// SEARCH
-// router.post('/address', insertAddress);
-
+// Search
+router.get('/search', getSearchProducts);
 
 module.exports = router;

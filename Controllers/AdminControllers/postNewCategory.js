@@ -5,6 +5,7 @@ import CategoryProperties from '../../Schemas/Category_PropertiesModel';
 
 const insertPropertyIntoCategory = (propertObj, categoryId) => {
   const { propertyName, units } = propertObj;
+
   return sequelize.query(
     `INSERT INTO category_properties
     (property_name, units, category_id )

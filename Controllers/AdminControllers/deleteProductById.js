@@ -26,4 +26,4 @@ const deleteProductById = async (req, res) => {
   }
 };
 
-module.exports = deleteProductById;
+export default deleteProductById;

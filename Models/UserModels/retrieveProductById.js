@@ -1,18 +1,26 @@
 import Sequelize from 'sequelize';
 import sequelize from '../../db';
 import { db } from '../../Schemas';
+import formatProductProperties from '../../Helpers/formatProductProperties';
 
 const { Product } = db;
 
-const retrieveProductById = (productId) => {
-  const product = sequelize.query(
-    `SELECT DISTINCT * FROM products WHERE id = ${productId}`,
+const retrieveProductById = async (productId) => {
+  const [product] = await sequelize.query(
+    `SELECT products.*,
+    GROUP_CONCAT(product_properties.property_name) as property_names,
+    GROUP_CONCAT(product_properties.property_value) as property_values
+    FROM products
+    LEFT JOIN product_properties ON product_properties.product_id = products.id
+    WHERE products.id = ${productId}
+    GROUP BY products.id;`,
     {
       model: Product,
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  return product;
+  const [formattedProduct] = formatProductProperties([product]);
+  return [formattedProduct];
 };
 
 export default retrieveProductById;
