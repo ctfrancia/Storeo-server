@@ -17,7 +17,7 @@ const updateProduct = async (req, res) => {
     product_properties: productProperties,
   } = req.body;
 
-  const fkProductId = req.body.product_properties[0].product_id;
+  const fkProductId = req.params.productId;
   /* eslint-enable */
   const productToUpdate = req.params.productId;
   if (req.method !== 'PUT') throw new Error('Incorrect Method');
