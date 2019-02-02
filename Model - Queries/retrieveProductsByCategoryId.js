@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from '../db';
 import { db } from '../Models';
+import formatProductProperties from '../Helpers/formatProductProperties';
 
 const { Product } = db;
 
@@ -16,11 +17,7 @@ const retrieveProductsByCategoryId = async (categoryId) => {
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  const formattedProducts = products.map(product => Object.assign(product,
-    {
-      property_names: product.property_names.split(','),
-      property_values: product.property_values.split(','),
-    }));
+  const formattedProducts = formatProductProperties(products);
   return formattedProducts;
 };
 
