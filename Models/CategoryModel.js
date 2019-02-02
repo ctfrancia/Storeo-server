@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      unique: true,
+      // unique: true,
     },
     /* eslint-disable */
     'created_at': {
