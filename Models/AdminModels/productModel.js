@@ -64,11 +64,22 @@ function updateProductProperties(productProperties, productId) {
   );
 }
 
+function deleteProduct(productId) {
+  sequelize.query(
+    `${QUERIES.deleteProductById}`,
+    {
+      replacements: { productId },
+      type: sequelize.QueryTypes.DELETE,
+    },
+  );
+}
+
 
 const productModel = {
   addProduct,
   addToProductProperties,
   updateProduct,
   updateProductProperties,
+  deleteProduct,
 };
 export default productModel;
