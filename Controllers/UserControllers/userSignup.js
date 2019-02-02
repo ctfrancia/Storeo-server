@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import sequelize from '../../db';
-import User from '../../Models/UserModel';
+import User from '../../Schemas/UserModel';
 import log from '../../Helpers/log';
 
 const userSignup = async (req, res, next) => {

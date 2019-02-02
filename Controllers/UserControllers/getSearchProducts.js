@@ -1,4 +1,4 @@
-import retrieveProductsBySearchQuery from '../../Model - Queries/retrieveProductsBySearchQuery';
+import retrieveProductsBySearchQuery from '../../Models/UserModels/retrieveProductsBySearchQuery';
 
 const getSearchProducts = async (req, res) => {
   const { q, category } = req.query;

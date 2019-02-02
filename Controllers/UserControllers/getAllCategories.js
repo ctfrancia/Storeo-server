@@ -1,4 +1,4 @@
-import retrieveAllCategories from '../../Model - Queries/retrieveAllCategories';
+import retrieveAllCategories from '../../Models/UserModels/retrieveAllCategories';
 
 const getAllCategories = async (req, res) => {
   try {

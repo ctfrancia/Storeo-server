@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
-import sequelize from '../db';
-import { db } from '../Models';
-import formatProductProperties from '../Helpers/formatProductProperties';
+import sequelize from '../../db';
+import { db } from '../../Schemas';
+import formatProductProperties from '../../Helpers/formatProductProperties';
 
 const { Product } = db;
 

@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize';
-import sequelize from '../db';
-import { db } from '../Models';
-import searchProductsQueryBuilder from '../Helpers/searchProductsQueryBuilder';
-import formatProductsArray from '../Helpers/formatProductsArray';
+import sequelize from '../../db';
+import { db } from '../../Schemas';
+import searchProductsQueryBuilder from '../../Helpers/searchProductsQueryBuilder';
+import formatProductsArray from '../../Helpers/formatProductsArray';
 
 const { Product } = db;
 

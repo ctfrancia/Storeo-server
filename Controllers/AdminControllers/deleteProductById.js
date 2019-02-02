@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import Product from '../../Models/ProductModel';
+import Product from '../../Schemas/ProductModel';
 import sequelize from '../../db';
 
 const deleteProductById = async (req, res) => {

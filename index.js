@@ -3,7 +3,7 @@ import cors from 'cors';
 import routes from './routes';
 
 const logger = require('morgan');
-const { db } = require('./Models');
+const { db } = require('./Schemas');
 
 const app = express();
 const PORT = process.env.PORT || 3000;

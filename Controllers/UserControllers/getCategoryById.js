@@ -1,4 +1,4 @@
-import retrieveCategoryById from '../../Model - Queries/retrieveCategoryById';
+import retrieveCategoryById from '../../Models/UserModels/retrieveCategoryById';
 
 const getCategoryById = async (req, res) => {
   try {

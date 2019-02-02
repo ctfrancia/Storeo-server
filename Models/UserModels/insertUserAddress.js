@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import sequelize from '../db';
+import sequelize from '../../Schemas';
 
 const insertUserAddress = async (body) => {
   const { id: userId } = body.user;
@@ -11,7 +11,7 @@ const insertUserAddress = async (body) => {
   } = body;
   // First query to update user record
   await sequelize.query(
-    `UPDATE users SET 
+    `UPDATE users SET
     country = :country,
     address = :address,
     zip = :zip,

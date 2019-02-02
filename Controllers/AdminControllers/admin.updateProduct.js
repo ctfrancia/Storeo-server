@@ -1,61 +1,21 @@
-import CONSTANTS from '../../_CONSTANTS';
-import QUERIES from '../rawqueries';
-import sequelize from '../../db';
-import Product from '../../Models/ProductModel';
-import pP from '../../Models/Product_PropertiesModel';
+import ProductModel from '../../Models/AdminModels/productModel';
 
 const updateProduct = async (req, res) => {
-  /* eslint-disable */
-  const {
-    name,
-    description,
-    price,
-    discount,
-    tags,
-    images,
-    category_id: categoryId,
-    product_properties: productProperties,
-  } = req.body;
-
-  const fkProductId = req.params.productId;
-  /* eslint-enable */
+  const toInsert = {
+    name: req.body.name,
+    description: req.body.description,
+    price: req.body.price,
+    discount: req.body.discount,
+    tags: req.body.tags,
+    images: req.body.images,
+    category_id: req.body.category_id,
+  };
+  const productProperties = req.body.product_properties;
   const productToUpdate = req.params.productId;
-  if (req.method !== 'PUT') throw new Error('Incorrect Method');
 
   try {
-    const { vatRate } = CONSTANTS.vatRate;
-    await sequelize
-      .query(`${QUERIES.updateProduct}`, {
-        model: Product,
-        replacements: {
-          productToUpdate,
-          name,
-          description,
-          price,
-          vatRate,
-          discount,
-          tags: JSON.stringify(tags),
-          images: JSON.stringify(images),
-          categoryId,
-        },
-        type: sequelize.QueryTypes.UPDATE,
-      });
-    if (!fkProductId) res.status(400).send('missing product_id');
-
-    await Promise.all(
-      productProperties.map(obj => sequelize
-        .query(`${QUERIES.updateProductProperties}`, {
-          model: pP,
-          replacements: {
-            category_id: obj.category_id,
-            property_name: obj.property_name,
-            units: obj.units,
-            property_value: obj.property_value,
-            fkProductId,
-          },
-          type: sequelize.QueryTypes.UPDATE,
-        })),
-    );
+    await ProductModel.updateProduct(toInsert, productToUpdate);
+    await ProductModel.updateProductProperties(productProperties, productToUpdate);
 
     res.status(202).send('Update successful');
   } catch (e) {

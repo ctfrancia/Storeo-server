@@ -1,4 +1,4 @@
-import retrieveAllProducts from '../../Model - Queries/retrieveAllProducts';
+import retrieveAllProducts from '../../Models/UserModels/retrieveAllProducts';
 
 const getAllProducts = async (req, res) => {
   try {

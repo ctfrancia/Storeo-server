@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 import sequelize from '../db';
-import { db } from '../Models';
+import { db } from '../Schemas';
 
 const { Product } = db;
 
@@ -22,7 +22,7 @@ const searchProductsQueryBuilder = async (queryPhrase, categoryName) => {
   // If category name is available retireve that categories id
   if (categoryName) {
     const categoryIdObject = await sequelize.query(
-      `SELECT id FROM categories 
+      `SELECT id FROM categories
       WHERE name = :categoryName`,
       {
         model: Product,
