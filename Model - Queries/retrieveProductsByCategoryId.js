@@ -4,15 +4,24 @@ import { db } from '../Models';
 
 const { Product } = db;
 
-const retrieveProductsByCategoryId = (categoryId) => {
-  const products = sequelize.query(
-    `SELECT * FROM products WHERE category_id = ${categoryId}`,
+const retrieveProductsByCategoryId = async (categoryId) => {
+  const products = await sequelize.query(
+    `SELECT products.*,
+  GROUP_CONCAT(product_properties.property_name) as property_names,
+  GROUP_CONCAT(product_properties.property_value) as property_values
+  FROM products, product_properties
+  WHERE products.category_id = ${categoryId} and products.id = product_properties.product_id GROUP BY products.id;`,
     {
       model: Product,
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  return products;
+  const formattedProducts = products.map(product => Object.assign(product,
+    {
+      property_names: product.property_names.split(','),
+      property_values: product.property_values.split(','),
+    }));
+  return formattedProducts;
 };
 
 export default retrieveProductsByCategoryId;
