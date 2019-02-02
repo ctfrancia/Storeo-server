@@ -41,8 +41,5 @@ router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
 // Search
 router.get('/search', searchProducts);
-// SEARCH
-// router.post('/address', insertAddress);
-
 
 module.exports = router;

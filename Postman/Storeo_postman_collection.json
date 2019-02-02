@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "c31cc6f6-a064-450a-9818-3138bcbacfcd",
+		"name": "Thesis Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Routes",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Get All Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product By ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/products/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product By Category ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/products/cat/55",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"cat",
+										"55"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Search Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/search?q=a&category=chair",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "a"
+										},
+										{
+											"key": "category",
+											"value": "chair"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "[ GET /search ] searchProducts",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:3000/search?q=a&category=chair",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"search"
+											],
+											"query": [
+												{
+													"key": "q",
+													"value": "a"
+												},
+												{
+													"key": "category",
+													"value": "chair"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "4180"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1054-N6Ih30yS89EZAVu+lxNdl8cM4Zc\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Feb 2019 14:37:32 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Handmade Metal Car sausage \",\n        \"description\": \"sausage Nisi numquam labore laborum est reprehenderit incidunt nam qui.\",\n        \"price\": \"3.77 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"1900 %\",\n        \"tags\": \"Sleek,\\n  Ergonomic,\\n  Unbranded\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T14:22:56.173Z\",\n        \"property_names\": \"Unbranded,Awesome,Small\",\n        \"property_values\": \"successfull,Samsung,blabla\",\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Rustic Rubber Gloves Sausage\",\n        \"description\": \"Sed ea non maiores qui consectetur sit sausage assumenda dolor.\",\n        \"price\": \"2.79 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"100 %\",\n        \"tags\": \"Unbranded,\\n  Fantastic,\\n  Sleek\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T14:22:56.174Z\",\n        \"property_names\": \"Handcrafted,Unbranded,Awesome,Ergonomic\",\n        \"property_values\": \"orange,black,woof\",\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Small Steel Keyboard Sausage\",\n        \"description\": \"Qui inventore non Sausage amet in sit id quo aut architecto.\",\n        \"price\": \"6.41 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"1300 %\",\n        \"tags\": \"Sleek,\\n  Sleek,\\n  Fantastic\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T14:27:35.681Z\",\n        \"property_names\": null,\n        \"property_values\": null,\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 24,\n        \"name\": \"Handmade Soft Shoes\",\n        \"description\": \"Incidunt aliquid eveniet necessitatibus sequi magnam quia autem aperiam vel.\",\n        \"price\": \"8.42 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"1400 %\",\n        \"tags\": \"Intelligent,\\n  Unbranded,\\n  Generic\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T15:14:27.396Z\",\n        \"property_names\": null,\n        \"property_values\": null,\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 27,\n        \"name\": \"Unbranded Concrete Sausages\",\n        \"description\": \"Ut recusandae tempore dolor dolor rerum.\",\n        \"price\": \"4.6 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"900 %\",\n        \"tags\": \"Rustic,\\n  Licensed,\\n  Handmade\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T13:05:46.954Z\",\n        \"property_names\": \"Licensed,Tasty,Generic\",\n        \"property_values\": \"Lovely,123,Inch\",\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 33,\n        \"name\": \"Refined Cotton Shirt\",\n        \"description\": \"Iusto sit ullam.\",\n        \"price\": \"0.61 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"1900 %\",\n        \"tags\": \"Licensed,\\n  Unbranded,\\n  Licensed\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T15:14:27.388Z\",\n        \"property_names\": null,\n        \"property_values\": null,\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 34,\n        \"name\": \"Refined Concrete Computer\",\n        \"description\": \"Quaerat illo labore qui maiores ut unde iusto.\",\n        \"price\": \"8.41 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"1200 %\",\n        \"tags\": \"Refined,\\n  Rustic,\\n  Rustic\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T15:14:27.389Z\",\n        \"property_names\": null,\n        \"property_values\": null,\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 35,\n        \"name\": \"Licensed Wooden Chicken\",\n        \"description\": \"Nihil voluptatem ipsum aut beatae ratione.\",\n        \"price\": \"7.21 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"1600 %\",\n        \"tags\": \"Generic,\\n  Unbranded,\\n  Tasty\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T15:14:27.389Z\",\n        \"property_names\": null,\n        \"property_values\": null,\n        \"selling_price\": \"NaN €\"\n    },\n    {\n        \"id\": 36,\n        \"name\": \"Gorgeous Concrete Computer\",\n        \"description\": \"Sunt consequatur et veniam dolorem magnam eos.\",\n        \"price\": \"6.57 €\",\n        \"vat_rate\": 11,\n        \"discount\": \"2100 %\",\n        \"tags\": \"Practical,\\n  Sleek,\\n  Intelligent\",\n        \"images\": \"http://lorempixel.com/640/480,\\n  http://lorempixel.com/640/480\",\n        \"category_id\": 2,\n        \"created_at\": \"2019-02-02T13:05:09.122Z\",\n        \"updated_at\": \"2019-02-02T15:14:27.390Z\",\n        \"property_names\": null,\n        \"property_values\": null,\n        \"selling_price\": \"NaN €\"\n    }\n]"
+								}
+							]
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Get All Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Category By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Login User",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "cervante@protonmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "miguelcervante",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signup New User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstname\": \"Luca\",\n\t\"lastname\": \"Cervante\",\n\t\"email\": \"cervante@protonmail.com\",\n\t\"password\": \"miguelcervante\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insert User Address",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "cervante@protonmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "miguelcervante",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"userId\": 60,\n\t\"country\": \"Spain\",\n\t\"address\": \"CarrerAvila27\",\n\t\"zip\": \"53 - 234\",\n\t\"phone\": 64536382\n}\n\n"
+								},
+								"url": {
+									"raw": "{{url}}/address",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"address"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Post New Order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\t\n\t\"order_status\": true,\n\t\"special_instructions\": \"fast delivery\",\n\t\"user_id\": 3\n}"
+								},
+								"url": {
+									"raw": "{{url}}/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Orders From User",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"userId\": 70\n}"
+								},
+								"url": {
+									"raw": "{{url}}/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Admin Routes",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Create New Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"name\": \"iPhone\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": null,\n   \"product_properties\": [\n        { \"category_id\": 2, \"property_name\": \"Color\", \"units\": null, \"property_value\": \"Black\"},\n        { \"category_id\": 2, \"property_name\": \"Brand\", \"units\": null, \"property_value\": \"Apple\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/admin/newproduct",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"newproduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/products/:productId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"products",
+										":productId"
+									],
+									"variable": [
+										{
+											"key": "productId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "[POST  /admin/categories/:categoryId]  createNewCategory",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:3000/admin/categories/:categoryId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"admin",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Feb 2019 08:49:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/categories/?categoryId=60",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"categories",
+										""
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "60"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "ea6fd79c-066f-4784-8261-77a41b5da202",
+			"key": "url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
