@@ -1,8 +1,8 @@
-import formatPricesAndDiscount from './formatPricesAndDiscount';
+import formatPricesAndPercentage from './formatPricesAndPercentage';
 import formatProductProperties from './formatProductProperties';
 
 const formatProductsArray = (productsArray) => {
-  const formatted = formatPricesAndDiscount(productsArray);
+  const formatted = formatPricesAndPercentage(productsArray);
   return formatProductProperties(formatted);
 };
 
