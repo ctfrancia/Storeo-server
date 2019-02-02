@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-import Order from '../../Models/OrderModel';
+import Order from '../../Schemas/OrderModel';
 import sequelize from '../../db';
 
 const postNewOrder = async (req, res) => {

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import sequelize from '../db';
-import { db } from '../Models';
+import { db } from '../Schemas';
 
 const { User } = db;
 

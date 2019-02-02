@@ -1,4 +1,4 @@
-import insertUserAddress from '../../Model - Queries/insertUserAddress';
+import insertUserAddress from '../../Models/UserModels/insertUserAddress';
 
 const updateAddress = async (req, res) => {
   try {

@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import log from '../../Helpers/log';
 import sequelize from '../../db';
-import User from '../../Models/UserModel';
+import User from '../../Schemas/UserModel';
 
 dotenv.config();
 

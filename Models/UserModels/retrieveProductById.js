@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
-import sequelize from '../db';
-import { db } from '../Models';
+import sequelize from '../../db';
+import { db } from '../../Schemas';
 
 const { Product } = db;
 

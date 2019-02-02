@@ -1,12 +1,12 @@
 import Sequelize from 'sequelize';
 import sequelize from '../../db';
-import Category from '../../Models/CategoryModel';
-import CategoryProperties from '../../Models/Category_PropertiesModel';
+import Category from '../../Schemas/CategoryModel';
+import CategoryProperties from '../../Schemas/Category_PropertiesModel';
 
 const insertPropertyIntoCategory = (propertObj, categoryId) => {
   const { propertyName, units } = propertObj;
   return sequelize.query(
-    `INSERT INTO category_properties 
+    `INSERT INTO category_properties
     (property_name, units, category_id )
     VALUES ( :propertyName, :units, :newCategoryId )
     `,

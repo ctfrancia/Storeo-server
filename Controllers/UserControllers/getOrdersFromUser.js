@@ -1,4 +1,4 @@
-import retrieveOrdersFromUser from '../../Model - Queries/retrieveOrdersFromUser';
+import retrieveOrdersFromUser from '../../Models/UserModels/retrieveOrdersFromUser';
 
 const getOrdersFromUser = async (req, res) => {
   try {
