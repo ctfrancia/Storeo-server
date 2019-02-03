@@ -6,6 +6,7 @@ import sequelize from '../../db';
 
 import insertNewOrderedItem from './insertNewOrderedItem';
 import retrieveOrdersByOrderId from '../UserModels/retrieveOrdersByOrderId';
+import setOrderStatus from '../../Helpers/setOrderStatus';
 
 const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
   const {
@@ -42,7 +43,7 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
     orderedItems.map(orderedItem => insertNewOrderedItem(orderedItem, orderId)),
   );
 
-  const orderedItemsStatus = await retrieveOrdersByOrderId(orderId);
+  const orderedItemsDetails = await retrieveOrdersByOrderId(orderId);
 
   // Format before sending the response
   const orderDetails = {
@@ -52,8 +53,8 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
     email,
     phone,
     order_num: orderNum,
-    ordered_items: orderedItemsStatus,
-    order_status: orderStatus,
+    order_status: setOrderStatus(orderStatus),
+    ordered_items: orderedItemsDetails,
   };
 
   return orderDetails;
