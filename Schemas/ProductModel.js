@@ -28,10 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     vat_rate: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      defaultValue: CONSTANTS.vatRate,
+      defaultValue: CONSTANTS.vatRate || 0,
     },
     discount: {
       type: DataTypes.DECIMAL(4, 2),
+      defaultValue: 0,
     },
     tags: {
       type: DataTypes.JSON,
