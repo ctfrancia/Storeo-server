@@ -5,6 +5,7 @@ import Order from '../../Schemas/OrderModel';
 import sequelize from '../../db';
 
 import insertNewOrderedItem from './insertNewOrderedItem';
+import retrieveOrdersByOrderId from '../UserModels/retrieveOrdersByOrderId';
 
 const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
   const {
@@ -33,9 +34,15 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
   const orderId = order[0];
 
   // eslint-disable-next-line
-  const orderedItemsInsertionResult = await Promise.all(
+  // const orderedItemsInsertionResult = await Promise.all(
+  //   orderedItems.map(orderedItem => insertNewOrderedItem(orderedItem, orderId)),
+  // );
+
+  await Promise.all(
     orderedItems.map(orderedItem => insertNewOrderedItem(orderedItem, orderId)),
   );
+
+  const orderedItemsStatus = await retrieveOrdersByOrderId(orderId);
 
   // Format before sending the response
   const orderDetails = {
@@ -45,9 +52,9 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
     email,
     phone,
     order_num: orderNum,
-    // ordered_items: orderedItemsInsertionResult,
+    ordered_items: orderedItemsStatus,
+    order_status: orderStatus,
   };
-
 
   return orderDetails;
 };
