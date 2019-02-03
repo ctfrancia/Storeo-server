@@ -30,6 +30,8 @@ const QUERIES = {
   deleteProductById: 'DELETE FROM products WHERE id = :productId',
   deleteCategoryById: `DELETE FROM categories
                         WHERE id = :id`,
+
+  updateCategory: 'UPDATE categories SET name = :name WHERE id = :id',
 };
 
 export default QUERIES;
