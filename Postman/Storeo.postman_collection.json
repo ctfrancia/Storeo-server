@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c31cc6f6-a064-450a-9818-3138bcbacfcd",
-		"name": "Thesis Project",
+		"name": "Storeo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -215,7 +215,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": ""
+									"raw": "{{url}}/categories/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
 								}
 							},
 							"response": []
@@ -233,13 +240,13 @@
 									"type": "basic",
 									"basic": [
 										{
-											"key": "username",
-											"value": "cervante@protonmail.com",
+											"key": "password",
+											"value": "saragomez",
 											"type": "string"
 										},
 										{
-											"key": "password",
-											"value": "miguelcervante",
+											"key": "username",
+											"value": "saragom@gmail.com",
 											"type": "string"
 										}
 									]
@@ -276,7 +283,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"firstname\": \"Luca\",\n\t\"lastname\": \"Cervante\",\n\t\"email\": \"cervante@protonmail.com\",\n\t\"password\": \"miguelcervante\"\n}"
+									"raw": "{\n\t\"firstname\": \"Sara\",\n\t\"lastname\": \"Gomez\",\n\t\"email\": \"saragom@gmail.com\",\n\t\"password\": \"saragomez\"\n}"
 								},
 								"url": {
 									"raw": "{{url}}/signup",
@@ -384,7 +391,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"userId\": 70\n}"
+									"raw": ""
 								},
 								"url": {
 									"raw": "{{url}}/orders",
@@ -426,13 +433,13 @@
 									"raw": "{\n   \"name\": \"iPhone\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": null,\n   \"product_properties\": [\n        { \"category_id\": 2, \"property_name\": \"Color\", \"units\": null, \"property_value\": \"Black\"},\n        { \"category_id\": 2, \"property_name\": \"Brand\", \"units\": null, \"property_value\": \"Apple\"}\n    ]\n}"
 								},
 								"url": {
-									"raw": "{{url}}/admin/newproduct",
+									"raw": "{{url}}/admin/products",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
-										"newproduct"
+										"products"
 									]
 								}
 							},
@@ -538,6 +545,29 @@
 									"body": ""
 								}
 							]
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/products/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"products",
+										"3"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -573,6 +603,35 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Create New Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"New Category Name\",\n  \"category_properties\": [\n    {\n      \"property_name\": \"Color\",\n      \"units\": \"\"\n    },\n    {\n      \"property_name\": \"Dimensions\",\n      \"units\": \"cm\"\n    },\n    {\n      \"property_name\": \"Made in\",\n      \"units\": \"\"\n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/admin/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"categories"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -582,7 +641,7 @@
 	],
 	"variable": [
 		{
-			"id": "ea6fd79c-066f-4784-8261-77a41b5da202",
+			"id": "4a8dba24-2883-4918-b6ec-d10edcfae6f3",
 			"key": "url",
 			"value": "http://localhost:3000",
 			"type": "string"
