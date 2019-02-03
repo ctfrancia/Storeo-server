@@ -25,7 +25,7 @@ router.put('/products/:productId', updateProduct);
 
 // Orders
 // get /admin/orders  Get All Orders
-
+// updateCategory
 // Categories
 router.get('/categories', getAllCategories);
 router.post('/categories', postNewCategory);
