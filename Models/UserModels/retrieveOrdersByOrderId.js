@@ -7,7 +7,7 @@ const { Order } = db;
 
 const retrieveOrdersByOrderId = async (orderId) => {
   const previousOrders = await sequelize.query(
-    `SELECT orders.id AS order_id, orders.order_num, orders.order_status, orders.special_instructions, orders.user_id, orders.created_at,
+    `SELECT orders.created_at,
     GROUP_CONCAT(quantity) AS quantities,
     GROUP_CONCAT(name) AS products,
     GROUP_CONCAT(price) AS prices,

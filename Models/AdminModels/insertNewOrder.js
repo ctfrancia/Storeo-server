@@ -53,8 +53,8 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
     phone,
     order_num: orderNum,
     ordered_items: orderedItemsStatus,
+    order_status: orderStatus,
   };
-
 
   return orderDetails;
 };
