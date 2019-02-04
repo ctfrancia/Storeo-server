@@ -4,6 +4,7 @@ import User from '../../Schemas/UserModel';
 import log from '../../Helpers/log';
 
 const userSignup = async (req, res, next) => {
+  console.log('++++++++++++++++++', req.originalUrl);
   try {
     const {
       firstname,
@@ -34,25 +35,63 @@ const userSignup = async (req, res, next) => {
           .status(400)
           .send(`The email ${email} has already been used.`);
       } else {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await sequelize.query(
-          `INSERT INTO users (first_name, last_name, email, password)
-           VALUES (:firstname, :lastname, :email, :password)`,
-          {
-            model: User,
-            replacements: {
-              firstname,
-              lastname,
-              email,
-              password: hashedPassword,
-            },
-            type: sequelize.QueryTypes.INSERT,
-          },
-        );
+        // Someone is trying to signup as admin
+        if (req.originalUrl === '/admin/signup') {
+          const adminExists = await sequelize.query('SELECT * FROM users WHERE role = 1',
+            {
+              type: sequelize.QueryTypes.SELECT,
+            });
 
-        res
-          .status(201)
-          .send('Success.');
+          if (adminExists && adminExists.length !== 0) {
+            res
+              .status(400)
+              .send('An Admin already exists for this store.');
+          } else {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            await sequelize.query(
+              `INSERT INTO users (first_name, last_name, email, password, role)
+           VALUES (:firstname, :lastname, :email, :password, :role)`,
+              {
+                model: User,
+                replacements: {
+                  firstname,
+                  lastname,
+                  email,
+                  password: hashedPassword,
+                  role: 1,
+                },
+                type: sequelize.QueryTypes.INSERT,
+              },
+            );
+
+            res
+              .status(201)
+              .send('Admin created.');
+          }
+        }
+
+        // Someone is trying to signup as user
+        if (req.originalUrl === '/signup') {
+          const hashedPassword = await bcrypt.hash(password, 10);
+          await sequelize.query(
+            `INSERT INTO users (first_name, last_name, email, password)
+           VALUES (:firstname, :lastname, :email, :password)`,
+            {
+              model: User,
+              replacements: {
+                firstname,
+                lastname,
+                email,
+                password: hashedPassword,
+              },
+              type: sequelize.QueryTypes.INSERT,
+            },
+          );
+
+          res
+            .status(201)
+            .send('User created.');
+        }
       }
     }
   } catch (err) {
