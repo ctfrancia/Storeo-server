@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import sequelize from '../../Schemas';
+import sequelize from '../../db';
 
 const insertUserAddress = async (body) => {
   const { id: userId } = body.user;
@@ -19,11 +19,11 @@ const insertUserAddress = async (body) => {
     WHERE id = :userId;`,
     {
       replacements: {
-        userId,
         country,
         address,
         zip,
         phone,
+        userId,
       },
       type: Sequelize.QueryTypes.UPDATE,
     },

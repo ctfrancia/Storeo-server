@@ -7,7 +7,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      // unique: true,
+      unique: true,
+    },
+    description: {
+      type: DataTypes.TEXT,
+    },
+    image: {
+      type: DataTypes.STRING,
     },
     /* eslint-disable */
     'created_at': {
@@ -18,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
-  /* eslint-enable */
+    /* eslint-enable */
   },
   {
     underscored: true,

@@ -15,13 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     price: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    selling_price: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
@@ -52,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
-  /* eslint-enable */
+    /* eslint-enable */
   },
   {
     underscored: true,
