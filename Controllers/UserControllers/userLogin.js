@@ -14,7 +14,7 @@ const userLogin = async (req, res) => {
     const [email, password] = atob(encodedString).split(':');
 
     const [user] = await sequelize.query(
-      'SELECT id, first_name, last_name, password, auth_token, role FROM users WHERE email = :email;',
+      'SELECT id, first_name, last_name, password, role FROM users WHERE email = :email;',
       {
         replacements: {
           email,
@@ -29,24 +29,21 @@ const userLogin = async (req, res) => {
       user.role = (user.role === 0) ? 'user' : 'admin';
 
       if (isPasswordValid) {
-        // If user does not have a token create one
-        if (!user.auth_token) {
-          const jwtSecret = process.env.JWT_SECRET;
-          // Token generation
-          const token = jwt.sign({ email }, jwtSecret);
-          // Insert token for user in the DB
-          await sequelize.query(
-            'UPDATE users SET auth_token = ? WHERE email = ?',
-            {
-              model: User,
-              replacements: [token, email],
-              type: sequelize.QueryTypes.INSERT,
-            },
-          );
-          user.auth_token = token;
-        }
+        const jwtSecret = process.env.JWT_SECRET;
+        // Token generation
+        const token = jwt.sign({ email }, jwtSecret);
+        // Insert token for user in the DB
+        await sequelize.query(
+          'UPDATE users SET auth_token = ? WHERE email = ?',
+          {
+            model: User,
+            replacements: [token, email],
+            type: sequelize.QueryTypes.INSERT,
+          },
+        );
         // Deleting password property on user object before sending to client
         delete user.password;
+        user.token = token;
 
         res
           .status(200)
