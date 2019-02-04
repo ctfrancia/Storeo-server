@@ -57,7 +57,6 @@ async function updateProduct(toInsert, productId) {
   });
 }
 
-// FIXME: product properties are getting overwritten need to fix
 async function updateProductProperties(toInsert, productId) {
   // delete all the product properties
   await sequelize.query(`${QUERIES.deleteProductProperties}`, {

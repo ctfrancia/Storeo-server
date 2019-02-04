@@ -34,12 +34,14 @@ module.exports = (sequelize, DataTypes) => {
   Category.associate = (models) => {
     Category.hasMany(models.product, {
       onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
       foreignKey: {
         // allowNull: false,
       },
     });
     Category.hasMany(models.category_properties, {
       onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
       foreignKey: {
         // allowNull: false,
       },
