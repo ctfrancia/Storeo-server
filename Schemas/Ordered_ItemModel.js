@@ -1,11 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-  const OrderedItems = sequelize.define('ordered_items', {
+  const OrderedItem = sequelize.define('ordered_items', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
       unique: true,
+    },
+    order_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    product_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
     },
     quantity: {
       allowNull: false,
@@ -26,5 +34,5 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
     timestamps: true,
   });
-  return OrderedItems;
+  return OrderedItem;
 };

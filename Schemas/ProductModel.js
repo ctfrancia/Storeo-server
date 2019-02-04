@@ -15,23 +15,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     price: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    selling_price: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
     vat_rate: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      defaultValue: CONSTANTS.vatRate,
+      defaultValue: CONSTANTS.vatRate || 0,
     },
     discount: {
       type: DataTypes.DECIMAL(4, 2),
+      defaultValue: 0,
     },
     tags: {
       type: DataTypes.JSON,
@@ -51,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
-  /* eslint-enable */
+    /* eslint-enable */
   },
   {
     underscored: true,

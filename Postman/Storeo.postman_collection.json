@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c31cc6f6-a064-450a-9818-3138bcbacfcd",
-		"name": "Thesis Project",
+		"name": "Storeo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -215,7 +215,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": ""
+									"raw": "{{url}}/categories/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
 								}
 							},
 							"response": []
@@ -233,13 +240,13 @@
 									"type": "basic",
 									"basic": [
 										{
-											"key": "username",
-											"value": "cervante@protonmail.com",
+											"key": "password",
+											"value": "codinginthesun",
 											"type": "string"
 										},
 										{
-											"key": "password",
-											"value": "miguelcervante",
+											"key": "username",
+											"value": "luca@codeworks.me",
 											"type": "string"
 										}
 									]
@@ -276,7 +283,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"firstname\": \"Luca\",\n\t\"lastname\": \"Cervante\",\n\t\"email\": \"cervante@protonmail.com\",\n\t\"password\": \"miguelcervante\"\n}"
+									"raw": "{\n\t\"firstname\": \"Luca\",\n\t\"lastname\": \"Panzavolta\",\n\t\"email\": \"luca@codeworks.me\",\n\t\"password\": \"codinginthesun\"\n}"
 								},
 								"url": {
 									"raw": "{{url}}/signup",
@@ -294,16 +301,11 @@
 							"name": "Insert User Address",
 							"request": {
 								"auth": {
-									"type": "basic",
-									"basic": [
+									"type": "bearer",
+									"bearer": [
 										{
-											"key": "username",
-											"value": "cervante@protonmail.com",
-											"type": "string"
-										},
-										{
-											"key": "password",
-											"value": "miguelcervante",
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2FAY29kZXdvcmtzLm1lIiwiaWF0IjoxNTQ5MjgwNDE4fQ.VKCqEi8ImPte5QTam2dCuZ6nbujQPq1UYr_sBNB610M",
 											"type": "string"
 										}
 									]
@@ -319,7 +321,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"userId\": 60,\n\t\"country\": \"Spain\",\n\t\"address\": \"CarrerAvila27\",\n\t\"zip\": \"53 - 234\",\n\t\"phone\": 64536382\n}\n\n"
+									"raw": "{\n\t\"country\": \"Spain\",\n\t\"address\": \"CarrerAvila27\",\n\t\"zip\": \"53 - 234\",\n\t\"phone\": 64536382\n}\n\n"
 								},
 								"url": {
 									"raw": "{{url}}/address",
@@ -384,7 +386,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"userId\": 70\n}"
+									"raw": ""
 								},
 								"url": {
 									"raw": "{{url}}/orders",
@@ -423,16 +425,16 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n   \"name\": \"iPhone\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": null,\n   \"product_properties\": [\n        { \"category_id\": 2, \"property_name\": \"Color\", \"units\": null, \"property_value\": \"Black\"},\n        { \"category_id\": 2, \"property_name\": \"Brand\", \"units\": null, \"property_value\": \"Apple\"}\n    ]\n}"
+									"raw": "{\n   \"name\": \"iPhone\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": 1,\n   \"product_properties\": [\n        { \"category_id\": 1, \"property_name\": \"Battery size\", \"units\": null, \"property_value\": \"3000\"},\n        { \"category_id\": 1, \"property_name\": \"Screen size\", \"units\": null, \"property_value\": \"5.5\"}\n    ]\n}"
 								},
 								"url": {
-									"raw": "{{url}}/admin/newproduct",
+									"raw": "{{url}}/admin/products",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
-										"newproduct"
+										"products"
 									]
 								}
 							},
@@ -538,6 +540,104 @@
 									"body": ""
 								}
 							]
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/products/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"products",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/products/:productId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"products",
+										":productId"
+									],
+									"variable": [
+										{
+											"key": "productId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Products By Category Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/products/cat/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"products",
+										"cat",
+										"2"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -555,7 +655,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/admin/categories/?categoryId=60",
+									"raw": "{{url}}/admin/categories/?categoryId=1",
 									"host": [
 										"{{url}}"
 									],
@@ -567,8 +667,97 @@
 									"query": [
 										{
 											"key": "categoryId",
-											"value": "60"
+											"value": "1"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Phones\",\n  \"category_properties\": [\n    {\n      \"property_name\": \"Battery size\",\n      \"units\": \"mah\"\n    },\n    {\n      \"property_name\": \"Screen size\",\n      \"units\": \"inches\"\n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/admin/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Get All Orders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlcnZhbnRlQHByb3Rvbm1haWwuY29tIiwiaWF0IjoxNTQ5MDQ1NjY3fQ.oLCUplYvB8GJBccl2xR3t_eUjydFWrSVrQmzMSxiMjg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/admin/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"orders"
 									]
 								}
 							},
@@ -580,11 +769,39 @@
 			]
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "aca55183-3b0a-46d7-9370-8a63ca711e5a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0b8f25c9-8cbf-4d08-b518-40dc7818687a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"id": "ea6fd79c-066f-4784-8261-77a41b5da202",
+			"id": "3b8a799e-d51b-43a8-b0db-09a0cd020f79",
 			"key": "url",
 			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"id": "513813cd-e273-405c-9e4a-595113685ea5",
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2FAY29kZXdvcmtzLm1lIiwiaWF0IjoxNTQ5Mjc4NzczfQ.ZjPMboetEGlvg6R_0chu5HXtfVESiZj7c9FIbpJ2nUY",
 			"type": "string"
 		}
 	]

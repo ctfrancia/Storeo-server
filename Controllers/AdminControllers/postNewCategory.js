@@ -2,19 +2,18 @@ import insertNewCategory from '../../Models/AdminModels/insertNewCategory';
 
 
 const postNewCategory = async (req, res) => {
-  const { category_properties: categoryProperties, name } = req.body;
-  let requestStatus = 201;
-  let responseMessage;
-
   try {
-    await insertNewCategory(categoryProperties, name);
-  } catch (error) {
+    await insertNewCategory(req.body);
+    res
+      .status(200)
+      .send('Success.');
+  } catch (err) {
     // eslint-disable-next-line no-console
-    console.error('Error in postNewCategory controller', error);
-    requestStatus = 500;
-    responseMessage = { error: 'Request Error' };
+    console.error('Error in postNewCategory controller', err);
+    res
+      .status(400)
+      .send('Impossible to create new category.');
   }
-  res.status(requestStatus).send(responseMessage);
 };
 
 export default postNewCategory;

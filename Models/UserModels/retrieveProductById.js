@@ -19,8 +19,12 @@ const retrieveProductById = async (productId) => {
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  const [formattedProduct] = formatProductProperties([product]);
-  return [formattedProduct];
+
+  if (product) {
+    const [formattedProduct] = formatProductProperties([product]);
+    return [formattedProduct];
+  }
+  return [];
 };
 
 export default retrieveProductById;
