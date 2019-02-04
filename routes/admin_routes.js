@@ -13,6 +13,10 @@ import getAllOrders from '../Controllers/AdminControllers/getAllOrders';
 // import authMiddleware from '../Middlewares/authorization';
 // import gateMiddleware from '../Middlewares/gate';
 
+import userLogin from '../Controllers/UserControllers/userLogin';
+import userSignup from '../Controllers/UserControllers/userSignup';
+
+
 const router = express.Router();
 
 // Products
@@ -33,9 +37,9 @@ router.put('/categories/:categoryId', updateCategory);
 router.delete('/categories/:categoryId', deleteCategory);
 
 // Login
-// post /admin/login
+router.get('/login', userLogin);
 
 // Signup
-// post /admin/signup
+router.post('/signup', userSignup);
 
 module.exports = router;
