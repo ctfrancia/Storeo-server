@@ -22,11 +22,7 @@ const postNewProduct = async (req, res) => {
 
 
   try {
-    console.log(productProperties);
-
     const getProductId = await productModel.addProduct(toInsert);
-    console.log(getProductId);
-
     await productModel.addToProductProperties(productProperties, getProductId[0]);
     res.status(201).send('Success');
   } catch (e) {
