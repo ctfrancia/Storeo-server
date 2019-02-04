@@ -10,10 +10,23 @@ const postNewProduct = async (req, res) => {
     images: req.body.images,
     category_id: req.body.category_id,
   };
-  const productProperties = req.body.product_properties;
+  const productProperties = req.body.product_properties.map((prop) => {
+    const unit = (!prop.units) ? '' : prop.units;
+    return Object.assign({}, {
+      category_id: prop.category_id,
+      property_name: prop.property_name,
+      units: unit,
+      property_value: prop.property_value,
+    });
+  });
+
 
   try {
+    console.log(productProperties);
+
     const getProductId = await productModel.addProduct(toInsert);
+    console.log(getProductId);
+
     await productModel.addToProductProperties(productProperties, getProductId[0]);
     res.status(201).send('Success');
   } catch (e) {

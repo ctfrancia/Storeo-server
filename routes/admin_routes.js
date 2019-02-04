@@ -10,8 +10,8 @@ import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/postNewProduct';
 import updateProduct from '../Controllers/AdminControllers/updateProduct';
 import getAllOrders from '../Controllers/AdminControllers/getAllOrders';
-import authMiddleware from '../Middlewares/authorization';
-import gateMiddleware from '../Middlewares/gate';
+// import authMiddleware from '../Middlewares/authorization';
+// import gateMiddleware from '../Middlewares/gate';
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.get('/products', getAllProducts);
 router.get('/products/:productId', getProductById);
 router.get('/products/cat/:categoryId', getProductsByCategoryId);
 router.delete('/products/:productId', deleteProductById);
-router.put('/products/:productId', authMiddleware, gateMiddleware, updateProduct);
+router.put('/products/:productId', updateProduct);
 
 // Orders
 router.get('/orders', getAllOrders);

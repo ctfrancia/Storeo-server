@@ -27,7 +27,7 @@ const QUERIES = {
   updateProductProperties: `UPDATE product_properties SET
                             category_id = :category_id,
                             property_name = :property_name,
-                            units = :units,
+                            units = :unit,
                             property_value = :property_value
                             WHERE product_id = :productId;`,
   updateProductProperty: `UPDATE product_properties SET
