@@ -4,7 +4,6 @@ import User from '../../Schemas/UserModel';
 import log from '../../Helpers/log';
 
 const userSignup = async (req, res, next) => {
-  console.log('++++++++++++++++++', req.originalUrl);
   try {
     const {
       firstname,
