@@ -8,10 +8,20 @@ import insertNewOrderedItem from './insertNewOrderedItem';
 import retrieveOrdersByOrderId from '../UserModels/retrieveOrdersByOrderId';
 import setOrderStatus from '../../Helpers/setOrderStatus';
 
-const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
+const insertNewOrder = async (data) => {
+  const {
+    total,
+    special_instructions: instructions,
+    ordered_items: orderedItems,
+  } = data;
+
   const {
     id: userId, first_name: fName, last_name: lName, email, phone,
-  } = userObj;
+  } = data.user;
+
+  console.log(total, instructions, orderedItems);
+  console.log(data.user);
+
   const orderNum = uuidv4();
   const orderStatus = 0;
   // PENDING TO DEFFINE STATUS CODES AND THE SETTER FUNCTION
@@ -19,13 +29,13 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
   const order = await sequelize.query(
     `INSERT INTO orders
     (order_num, order_status, special_instructions, user_id)
-    VALUES ( :orderNum, :orderStatus, :specInstructions, :userId)
+    VALUES ( :orderNum, :orderStatus, :instructions, :userId)
     `,
     {
       model: Order,
       replacements: {
         orderNum,
-        specInstructions,
+        instructions,
         userId,
         orderStatus,
       },
@@ -49,7 +59,7 @@ const insertNewOrder = async (userObj, specInstructions, orderedItems) => {
   const orderDetails = {
     first_name: fName,
     last_name: lName,
-    special_instructions: specInstructions,
+    special_instructions: instructions,
     email,
     phone,
     order_num: orderNum,
