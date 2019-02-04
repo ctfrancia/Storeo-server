@@ -10,6 +10,8 @@ import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/postNewProduct';
 import updateProduct from '../Controllers/AdminControllers/updateProduct';
 import getAllOrders from '../Controllers/AdminControllers/getAllOrders';
+import userLogin from '../Controllers/UserControllers/userLogin';
+import userSignup from '../Controllers/UserControllers/userSignup';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
@@ -33,9 +35,9 @@ router.put('/categories/:categoryId', updateCategory);
 router.delete('/categories/:categoryId', deleteCategory);
 
 // Login
-// post /admin/login
+router.get('/login', userLogin);
 
 // Signup
-// post /admin/signup
+router.post('/signup', userSignup);
 
 module.exports = router;
