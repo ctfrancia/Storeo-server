@@ -4,15 +4,26 @@ import Category from '../../Schemas/CategoryModel';
 import insertNewCategoryProperty from './insertNewCategoryProperty';
 
 
-const insertNewCategory = async (categoryProperties, name) => {
+const insertNewCategory = async (data) => {
+  const {
+    category_properties: categoryProperties,
+    name,
+    description,
+    image,
+  } = data;
+
   //  Create new Category
   const newCategory = await sequelize.query(
-    `INSERT INTO categories (name)
-    VALUES (:name)
+    `INSERT INTO categories (name, description, image)
+    VALUES (:name, :description, :image);
     `,
     {
       model: Category,
-      replacements: { name },
+      replacements: {
+        name,
+        description,
+        image,
+      },
       type: Sequelize.QueryTypes.INSERT,
     },
   );

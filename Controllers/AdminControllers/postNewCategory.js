@@ -3,9 +3,7 @@ import insertNewCategory from '../../Models/AdminModels/insertNewCategory';
 
 const postNewCategory = async (req, res) => {
   try {
-    const { category_properties: categoryProperties, name } = req.body;
-
-    await insertNewCategory(categoryProperties, name);
+    await insertNewCategory(req.body);
     res
       .status(200)
       .send('Success.');
