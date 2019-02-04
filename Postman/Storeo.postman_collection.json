@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c31cc6f6-a064-450a-9818-3138bcbacfcd",
+		"_postman_id": "f12d133e-f88a-4cf7-bbbd-097c8a85f1ff",
 		"name": "Storeo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -310,7 +310,7 @@
 										}
 									]
 								},
-								"method": "POST",
+								"method": "PUT",
 								"header": [
 									{
 										"key": "Content-Type",
@@ -321,15 +321,23 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"country\": \"Spain\",\n\t\"address\": \"CarrerAvila27\",\n\t\"zip\": \"53 - 234\",\n\t\"phone\": 64536382\n}\n\n"
+									"raw": ""
 								},
 								"url": {
-									"raw": "{{url}}/address",
+									"raw": "{{url}}/admin/categories/:categoryId",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"address"
+										"admin",
+										"categories",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -425,7 +433,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n   \"name\": \"iPhone\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": 1,\n   \"product_properties\": [\n        { \"category_id\": 1, \"property_name\": \"Battery size\", \"units\": null, \"property_value\": \"3000\"},\n        { \"category_id\": 1, \"property_name\": \"Screen size\", \"units\": null, \"property_value\": \"5.5\"}\n    ]\n}"
+									"raw": "{\n   \"name\": \"Cheese1adsfasd23\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": 2,\n   \"product_properties\": [\n        { \"category_id\": 1, \"property_name\": \"test no units\",  \"property_value\": \"3000\"},\n        { \"category_id\": 1, \"property_name\": \"Screen size\", \"units\": \"kg\", \"property_value\": \"5.5\"}\n    ]\n}"
 								},
 								"url": {
 									"raw": "{{url}}/admin/products",
@@ -720,6 +728,42 @@
 									"path": [
 										"admin",
 										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Cars updated7\",\n    \"description\":\"This is the cars description\",\n    \"image\":\"https://res.cloudinary.com/dyarpqn0z/image/upload/v1549298460/zlynbd9bwqjue9lhqsrh.png\",\n    \"category_properties\":[\n                            {\"property_name\":\"test to be empty\",\"units\":\"MPH\"},\n                            {\"property_name\":\"Height6\",\"units\":\"Inches\"}\n                            ]\n    \n}"
+								},
+								"url": {
+									"raw": "{{url}}/admin/categories/:categoryId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"categories",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": ""
+										}
 									]
 								}
 							},
