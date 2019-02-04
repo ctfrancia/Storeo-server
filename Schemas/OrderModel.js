@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       notNull: true,
     },
     order_status: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
+      notNull: true,
       defaultValue: 0,
     },
     special_instructions: {

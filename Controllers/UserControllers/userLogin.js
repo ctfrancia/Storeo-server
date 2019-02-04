@@ -13,8 +13,10 @@ const userLogin = async (req, res) => {
   if (authType === 'Basic') {
     const [email, password] = atob(encodedString).split(':');
 
-    const [user] = await sequelize.query('SELECT id, first_name, last_name, password FROM users WHERE email = :email',
+    const [user] = await sequelize.query('SELECT id, first_name, last_name, password, role FROM users WHERE email = :email',
       { replacements: { email }, type: sequelize.QueryTypes.SELECT });
+
+    user.role = (user.role === 0) ? 'user' : 'admin';
 
     log('user is ', user);
     //  The following block of code runs if the user with that email is found
