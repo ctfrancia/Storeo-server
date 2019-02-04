@@ -6,8 +6,8 @@ const deleteProductById = async (req, res) => {
   try {
     await productModel.deleteProduct(productId);
     res
-      .status(204)
-      .end('Delete successfull');
+      .status(200)
+      .send('Success.');
   } catch (error) {
     // eslint-disable-next-line
     console.error('Error in the deleteProducById controller.');

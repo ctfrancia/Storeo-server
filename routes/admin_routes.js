@@ -17,10 +17,10 @@ const router = express.Router();
 
 // Products
 router.post('/products', postNewProduct);
-router.get('/products', authMiddleware, gateMiddleware, getAllProducts);
-router.get('/products/:productId', authMiddleware, gateMiddleware, getProductById);
-router.get('/products/cat/:categoryId', authMiddleware, gateMiddleware, getProductsByCategoryId);
-router.delete('/products/:productId', authMiddleware, gateMiddleware, deleteProductById);
+router.get('/products', getAllProducts);
+router.get('/products/:productId', getProductById);
+router.get('/products/cat/:categoryId', getProductsByCategoryId);
+router.delete('/products/:productId', deleteProductById);
 router.put('/products/:productId', authMiddleware, gateMiddleware, updateProduct);
 
 // Orders
