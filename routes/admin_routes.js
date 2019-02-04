@@ -9,31 +9,27 @@ import getProductsByCategoryId from '../Controllers/UserControllers/getProductBy
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/admin.postNewProduct';
 import updateProduct from '../Controllers/AdminControllers/admin.updateProduct';
+import authMiddleware from '../Middlewares/authorization';
+import gateMiddleware from '../Middlewares/gate';
 
 const router = express.Router();
-//= ===============================
-//         ADMIN ROUTES
-//= ===============================
 
-// PRODUCTS
-router.post('/products', postNewProduct);
-router.get('/products', getAllProducts);
-router.get('/products/:productId', getProductById);
-router.get('/products/cat/:categoryId', getProductsByCategoryId);
-router.delete('/products/:productId', deleteProductById);
-router.put('/products/:productId', updateProduct);
+// Products
+router.post('/products', authMiddleware, gateMiddleware, postNewProduct);
+router.get('/products', authMiddleware, gateMiddleware, getAllProducts);
+router.get('/products/:productId', authMiddleware, gateMiddleware, getProductById);
+router.get('/products/cat/:categoryId', authMiddleware, gateMiddleware, getProductsByCategoryId);
+router.delete('/products/:productId', authMiddleware, gateMiddleware, deleteProductById);
+router.put('/products/:productId', authMiddleware, gateMiddleware, updateProduct);
 
 // Orders
-// get /admin/orders  Get All Orders
-// updateCategory
+// router.get('/orders', )
+
 // Categories
 router.get('/categories', getAllCategories);
 router.post('/categories', postNewCategory);
 router.put('/categories/:categoryId', updateCategory);
 router.delete('/categories/:categoryId', deleteCategory);
-
-// SPECIFIC CATEGORY
-// post /admin/categories/:categoryId
 
 // Login
 // post /admin/login
