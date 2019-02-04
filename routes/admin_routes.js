@@ -16,7 +16,7 @@ import gateMiddleware from '../Middlewares/gate';
 const router = express.Router();
 
 // Products
-router.post('/products', authMiddleware, gateMiddleware, postNewProduct);
+router.post('/products', postNewProduct);
 router.get('/products', authMiddleware, gateMiddleware, getAllProducts);
 router.get('/products/:productId', authMiddleware, gateMiddleware, getProductById);
 router.get('/products/cat/:categoryId', authMiddleware, gateMiddleware, getProductsByCategoryId);
