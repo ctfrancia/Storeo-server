@@ -20,7 +20,8 @@ const retrieveCategoryById = async (categoryId) => {
       type: Sequelize.QueryTypes.SELECT,
     },
   );
-  if (Category) {
+
+  if (category) {
     const [formattedCategory] = formatCategoryProperties([category]);
     return [formattedCategory];
   }
