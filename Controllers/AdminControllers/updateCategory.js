@@ -2,9 +2,9 @@ import categoryModel from '../../Models/AdminModels/categoryModel';
 
 const updateCategory = async (req, res) => {
   const id = req.params.categoryId;
-  const { name } = req.body;
+  const toChange = req.body;
   try {
-    await categoryModel.updateCategory(name, id);
+    await categoryModel.updateCategory(toChange, id);
     res
       .status(202)
       .end('Update successfull');
