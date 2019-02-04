@@ -7,8 +7,8 @@ import getProductById from '../Controllers/UserControllers/getProductById';
 import deleteProductById from '../Controllers/AdminControllers/deleteProductById';
 import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
-import postNewProduct from '../Controllers/AdminControllers/admin.postNewProduct';
-import updateProduct from '../Controllers/AdminControllers/admin.updateProduct';
+import postNewProduct from '../Controllers/AdminControllers/postNewProduct';
+import updateProduct from '../Controllers/AdminControllers/updateProduct';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
