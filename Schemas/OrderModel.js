@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     order_status: {
       type: DataTypes.BOOLEAN,
-      notNull: true,
+      defaultValue: 0,
     },
     special_instructions: {
       type: DataTypes.STRING,

@@ -35,7 +35,7 @@ const userSignup = async (req, res, next) => {
           .send(`The email ${email} has already been used.`);
       } else {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await sequelize.query(
+        await sequelize.query(
           `INSERT INTO users (first_name, last_name, email, password)
            VALUES (:firstname, :lastname, :email, :password)`,
           {
@@ -50,10 +50,9 @@ const userSignup = async (req, res, next) => {
           },
         );
 
-        log('New User', newUser);
         res
           .status(201)
-          .send(newUser);
+          .send('Success.');
       }
     }
   } catch (err) {

@@ -9,6 +9,7 @@ import getProductsByCategoryId from '../Controllers/UserControllers/getProductBy
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/postNewProduct';
 import updateProduct from '../Controllers/AdminControllers/updateProduct';
+import getAllOrders from '../Controllers/AdminControllers/getAllOrders';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
@@ -23,7 +24,7 @@ router.delete('/products/:productId', authMiddleware, gateMiddleware, deleteProd
 router.put('/products/:productId', authMiddleware, gateMiddleware, updateProduct);
 
 // Orders
-// router.get('/orders', )
+router.get('/orders', getAllOrders);
 
 // Categories
 router.get('/categories', getAllCategories);
