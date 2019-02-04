@@ -2,7 +2,14 @@ import sequelize from '../../db';
 import CONSTANTS from '../../_CONSTANTS';
 import QUERIES from '../rawqueries';
 
-function addProduct(toBeInserted) {
+async function deleteProduct(productId) {
+  sequelize.query(`${QUERIES.deleteProductById}`, {
+    replacements: { productId },
+    type: sequelize.QueryTypes.DELETE,
+  });
+}
+
+async function addProduct(toBeInserted) {
   return sequelize.query(`${QUERIES.insertIntoProducts}`, {
     replacements: {
       name: toBeInserted.name,
@@ -18,7 +25,7 @@ function addProduct(toBeInserted) {
   });
 }
 
-function addToProductProperties(toBeInserted, productFK) {
+async function addToProductProperties(toBeInserted, productId) {
   const productProperties = toBeInserted;
   return Promise.all(
     productProperties.map(props => sequelize.query(`${QUERIES.insertIntoProductProperties}`, {
@@ -27,14 +34,14 @@ function addToProductProperties(toBeInserted, productFK) {
         property_name: props.property_name,
         units: props.units,
         property_value: props.property_value,
-        product_id: productFK,
+        productId,
       },
     })),
   );
 }
 
-function updateProduct(toInsert, productId) {
-  return sequelize.query(`${QUERIES.updateProduct}`, {
+async function updateProduct(toInsert, productId) {
+  await sequelize.query(`${QUERIES.updateProduct}`, {
     replacements: {
       productId,
       name: toInsert.name,
@@ -50,9 +57,16 @@ function updateProduct(toInsert, productId) {
   });
 }
 
-function updateProductProperties(productProperties, productId) {
-  return Promise.all(
-    productProperties.map(props => sequelize.query(`${QUERIES.updateProductProperties}`, {
+// FIXME: product properties are getting overwritten need to fix
+async function updateProductProperties(toInsert, productId) {
+  // delete all the product properties
+  await sequelize.query(`${QUERIES.deleteProductProperties}`, {
+    replacements: { productId },
+    type: sequelize.QueryTypes.DELETE,
+  });
+  // after deletion put it back in the database
+  await Promise.all(
+    toInsert.map(props => sequelize.query(`${QUERIES.insertIntoProductProperties}`, {
       replacements: {
         category_id: props.category_id,
         property_name: props.property_name,
@@ -63,17 +77,6 @@ function updateProductProperties(productProperties, productId) {
     })),
   );
 }
-
-function deleteProduct(productId) {
-  sequelize.query(
-    `${QUERIES.deleteProductById}`,
-    {
-      replacements: { productId },
-      type: sequelize.QueryTypes.DELETE,
-    },
-  );
-}
-
 
 const productModel = {
   addProduct,
