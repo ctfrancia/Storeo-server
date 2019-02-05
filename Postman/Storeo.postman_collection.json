@@ -433,7 +433,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n   \"name\": \"Cheese1adsfasd23\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": 2,\n   \"product_properties\": [\n        { \"category_id\": 1, \"property_name\": \"test no units\",  \"property_value\": \"3000\"},\n        { \"category_id\": 1, \"property_name\": \"Screen size\", \"units\": \"kg\", \"property_value\": \"5.5\"}\n    ]\n}"
+									"raw": "{\n   \"name\": \"Cheese12\",\n   \"description\": \"Expensive.\",\n   \"price\": 100000,\n   \"vat_rate\": 10.5,\n   \"discount\": 10.5,\n   \"tags\": [\"apple\", \"new model\"],\n   \"images\": [\n        \"https://dummyimage.com/300/09f/fff.png\",\n        \"https://dummyimage.com/300/09f/fff.png\"\n        ],\n   \"category_id\": 1,\n   \"product_properties\": [\n        { \"category_id\": 1, \"property_name\": \"test no units\",  \"property_value\": \"3000\"},\n        { \"category_id\": 1, \"property_name\": \"Screen size\", \"units\": \"kg\", \"property_value\": \"5.5\"}\n    ]\n}"
 								},
 								"url": {
 									"raw": "{{url}}/admin/products",
@@ -696,7 +696,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Phones\",\n  \"category_properties\": [\n    {\n      \"property_name\": \"Battery size\",\n      \"units\": \"mah\"\n    },\n    {\n      \"property_name\": \"Screen size\",\n      \"units\": \"inches\"\n    }\n  ]\n}"
+									"raw": "{\n  \"name\": \"Phones\",\n  \"description\": \"this phone is stupidly expensive\",\n  \"image\": \"http://www.fakeimage.com/sdf/123\",\n  \"category_properties\": [\n    {\n      \"property_name\": \"Battery size\",\n      \"units\": \"mah\"\n    },\n    {\n      \"property_name\": \"Screen size\",\n      \"units\": \"inches\"\n    }\n  ]\n}"
 								},
 								"url": {
 									"raw": "{{url}}/admin/categories",
