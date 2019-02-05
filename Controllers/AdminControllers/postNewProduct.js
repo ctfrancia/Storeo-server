@@ -23,8 +23,15 @@ const postNewProduct = async (req, res) => {
 
   try {
     const getProductId = await productModel.addProduct(toInsert);
-    await productModel.addToProductProperties(productProperties, getProductId[0]);
-    res.status(201).send('Success.');
+    // getProductId will either return true or the product Id, === to protect against truthiness
+    console.log('asdfadfawesdfasdfqefqwefq', getProductId);
+
+    if (getProductId === true) {
+      res.status(409).end('Product already exists');
+    } else {
+      await productModel.addToProductProperties(productProperties, getProductId[0]);
+      res.status(201).send('Success.');
+    }
   } catch (e) {
     /* eslint-disable-next-line */
     console.log(e);
