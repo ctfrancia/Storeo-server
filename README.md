@@ -47,3 +47,14 @@ find an image of the structure [here](https://imgur.com/a/6pRzUzW)
 As this is a 100% open source project all contributions and pull requests will be highly welcomed and analyized by [Christian Francia](https://github.com/ctfrancia), [Luca PanzaVolta](https://github.com/LucaPanzavolta) and [Uros Cirkovic](https://github.com/ross-u). For anything concering the Front End please visit [here](https://github.com/zain-ali-syed/Storeo_Frontend) and [Zain Ali Syed](https://github.com/zain-ali-syed), [Tomasz Gasienica-Szostak](https://github.com/Casprovy) and [Uros Cirkovic](https://github.com/ross-u).
 
 However, until thorough tests have been written and a Continuous Integration  like Jenkins or Travis has been implimented to check pull request builds we won't be able to accept any pull requests at the time. On the other hand, if you feel up to the task of writting tests for this project please get in contact with one of us and we will discuss it with you!
+
+# Features to add
+
+◻️Add tests
+
+◻️Add quantity next to product or "In Stock" flag next to product
+
+◻️After signing up send verification email
+
+◻️After creating an account as a user receive an email authentication
+
