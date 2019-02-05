@@ -12,7 +12,14 @@ const insertNewCategory = async (data) => {
     image,
   } = data;
 
-  //  Create new Category
+  // SELECT name FROM categories WHERE name = "${name}"
+  //  querying db to retrieve all values under the category table where the name is equal to ${name}
+  const answer = await sequelize.query(`SELECT name FROM categories WHERE name = "${name}"`,
+    sequelize.QueryTypes.SELECT);
+
+  // testing to see if the row exists with the name = ${name}
+  if (answer[0].length === 1) return true;
+
   const newCategory = await sequelize.query(
     `INSERT INTO categories (name, description, image)
     VALUES (:name, :description, :image);
