@@ -49,7 +49,7 @@ const userSignup = async (req, res, next) => {
             const hashedPassword = await bcrypt.hash(password, 10);
             await sequelize.query(
               `INSERT INTO users (first_name, last_name, email, password, role)
-           VALUES (:firstname, :lastname, :email, :password, :role)`,
+            VALUES (:firstname, :lastname, :email, :password, :role)`,
               {
                 model: User,
                 replacements: {
@@ -74,7 +74,7 @@ const userSignup = async (req, res, next) => {
           const hashedPassword = await bcrypt.hash(password, 10);
           await sequelize.query(
             `INSERT INTO users (first_name, last_name, email, password)
-           VALUES (:firstname, :lastname, :email, :password)`,
+            VALUES (:firstname, :lastname, :email, :password)`,
             {
               model: User,
               replacements: {
