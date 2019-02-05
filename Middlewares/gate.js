@@ -1,10 +1,16 @@
+
 const gateMiddleware = (req, res, next) => {
-  if (req.body.user) {
+  const { user } = req.body;
+  // Determine if the request comes from admin or user
+  const reqFromAdmin = req.originalUrl.includes('/admin');
+  if (reqFromAdmin && user.role === 1) {
+    next();
+  } else if (!reqFromAdmin) {
     next();
   } else {
     res
-      .status(302)
-      .redirect(`${process.env.BASE_URL || 'http://localhost:3000'}/login`);
+      .status(401)
+      .end();
   }
 };
 
