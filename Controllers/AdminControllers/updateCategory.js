@@ -7,7 +7,7 @@ const updateCategory = async (req, res) => {
     await categoryModel.updateCategory(toChange, id);
     res
       .status(202)
-      .end('Update successfull');
+      .end('Update successful');
   } catch (e) {
     /* eslint-disable-next-line */
     console.log('Error updating in controller ==>', e);
