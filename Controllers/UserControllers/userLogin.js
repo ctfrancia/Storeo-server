@@ -14,7 +14,7 @@ const userLogin = async (req, res) => {
     const [email, password] = atob(encodedString).split(':');
 
     const [user] = await sequelize.query(
-      'SELECT id, first_name, last_name, password, role FROM users WHERE email = :email;',
+      'SELECT id, first_name, last_name, password, role, email, address, country, zip, phone FROM users WHERE email = :email;',
       {
         replacements: {
           email,
