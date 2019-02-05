@@ -8,7 +8,7 @@ const deleteCategory = async (req, res) => {
     );
     res
       .status(200)
-      .end();
+      .end('Delete successful');
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in deleteCategory Controller =>', err);
