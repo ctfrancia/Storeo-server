@@ -27,6 +27,7 @@ async function addProduct(toBeInserted) {
 
 async function addToProductProperties(toBeInserted, productId) {
   const productProperties = toBeInserted;
+  // const unitChecker = toBeInserted.units === '' ? null : toBeInserted.units;
   return Promise.all(
     productProperties.map(props => sequelize.query(`${QUERIES.insertIntoProductProperties}`, {
       replacements: {
