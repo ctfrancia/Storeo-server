@@ -1,14 +1,8 @@
 import insertNewOrder from '../../Models/AdminModels/insertNewOrder';
 
 const postNewOrder = async (req, res) => {
-  const {
-    user,
-    special_instructions: instructions,
-    ordered_items: orderedItems,
-  } = req.body;
-
   try {
-    const result = await insertNewOrder(user, instructions, orderedItems);
+    const result = await insertNewOrder(req.body);
     res
       .status(201)
       .send(result);
