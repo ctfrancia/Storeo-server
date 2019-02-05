@@ -7,6 +7,7 @@ const stripe = Stripe(process.env.SK_STRIPE);
 
 const stripeCharge = async (req, res) => {
   try {
+    // eslint-disable-next-line
     console.log('body is ', req.body, 'and type is ', typeof req.body);
     const { amount, token } = req.body;
 
@@ -16,7 +17,8 @@ const stripeCharge = async (req, res) => {
       source: token,
     });
 
-    console.log('chage is ', charge);
+    // eslint-disable-next-line
+    console.log('charge is ', charge);
 
     res
       .status(200)
