@@ -1,4 +1,5 @@
 // Update with your config settings.
+//  eslint-disable-next-line
 require('./config/config');
 
 const path = require('path');
