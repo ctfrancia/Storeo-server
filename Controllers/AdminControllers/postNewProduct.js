@@ -24,7 +24,6 @@ const postNewProduct = async (req, res) => {
   try {
     const getProductId = await productModel.addProduct(toInsert);
     // getProductId will either return true or the product Id, === to protect against truthiness
-    console.log('asdfadfawesdfasdfqefqwefq', getProductId);
 
     if (getProductId === true) {
       res.status(409).end('Product already exists');
