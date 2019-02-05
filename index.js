@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import routes from './routes';
 
 const logger = require('morgan');
@@ -14,6 +15,7 @@ app
   .use(logger('tiny'))
   .use(cors())
   .use(express.json())
+  .use(bodyParser.text('text/plain'))
   .use(routes);
 
 app.listen(PORT, (err) => {

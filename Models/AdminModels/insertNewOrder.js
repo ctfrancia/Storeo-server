@@ -10,7 +10,6 @@ import setOrderStatus from '../../Helpers/setOrderStatus';
 
 const insertNewOrder = async (data) => {
   const {
-    total,
     special_instructions: instructions,
     ordered_items: orderedItems,
   } = data;
@@ -18,9 +17,6 @@ const insertNewOrder = async (data) => {
   const {
     id: userId, first_name: fName, last_name: lName, email, phone,
   } = data.user;
-
-  console.log(total, instructions, orderedItems);
-  console.log(data.user);
 
   const orderNum = uuidv4();
   const orderStatus = 0;

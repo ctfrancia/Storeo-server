@@ -10,6 +10,7 @@ import updateAddress from '../Controllers/UserControllers/updateAddress';
 import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
 import getSearchProducts from '../Controllers/UserControllers/getSearchProducts';
 import getCategoryById from '../Controllers/UserControllers/getCategoryById';
+import stripeCharge from '../Controllers/UserControllers/stripeCharge';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
@@ -41,5 +42,8 @@ router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
 
 // Search
 router.get('/search', getSearchProducts);
+
+// Stripe charge
+router.post('/charge', stripeCharge);
 
 module.exports = router;
