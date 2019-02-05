@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       notNull: true,
     },
+    total: {
+      type: DataTypes.INTEGER,
+    },
     /* eslint-disable */
     'created_at': {
       type: DataTypes.DATE(3),
