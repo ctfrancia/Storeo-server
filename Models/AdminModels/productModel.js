@@ -2,14 +2,20 @@ import sequelize from '../../db';
 import CONSTANTS from '../../_CONSTANTS';
 import QUERIES from '../rawqueries';
 
-async function deleteProduct(productId) {
+function deleteProduct(productId) {
   sequelize.query(`${QUERIES.deleteProductById}`, {
     replacements: { productId },
     type: sequelize.QueryTypes.DELETE,
   });
 }
 
-async function addProduct(toBeInserted) {
+function addProduct(toBeInserted) {
+  // first query the db to see if the product already exists;
+  const exists = sequelize.query(`SELECT name FROM products WHERE name = "${toBeInserted.name}"`);
+
+  // if there is a length then we know that the product with the name already exists
+  if (exists[0].length === 1) return true;
+
   return sequelize.query(`${QUERIES.insertIntoProducts}`, {
     replacements: {
       name: toBeInserted.name,
@@ -25,7 +31,7 @@ async function addProduct(toBeInserted) {
   });
 }
 
-async function addToProductProperties(toBeInserted, productId) {
+function addToProductProperties(toBeInserted, productId) {
   const productProperties = toBeInserted;
   // const unitChecker = toBeInserted.units === '' ? null : toBeInserted.units;
   return Promise.all(
@@ -41,8 +47,8 @@ async function addToProductProperties(toBeInserted, productId) {
   );
 }
 
-async function updateProduct(toInsert, productId) {
-  await sequelize.query(`${QUERIES.updateProduct}`, {
+function updateProduct(toInsert, productId) {
+  return sequelize.query(`${QUERIES.updateProduct}`, {
     replacements: {
       productId,
       name: toInsert.name,
