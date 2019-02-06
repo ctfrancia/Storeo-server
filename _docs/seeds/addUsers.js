@@ -1,11 +1,10 @@
 const faker = require('faker');
 
-/* eslint-disable-next-line */
+/* eslint-disable */
 exports.seed = (knex, Promise) => (
   // Deletes ALL existing entries
   knex('users')
     .del()
-  /* eslint-disable */
     .then(() => (knex('users').insert([
       { id: 1, password: faker.random.uuid(), auth_token: faker.random.uuid(), email: faker.internet.email(), role: true, first_name: 'Christian', last_name: 'Francia', address: '213 smith st', country: 'Spain', zip: 12355, phone: 12312312 },
       { id: 2, password: faker.random.uuid(), auth_token: faker.random.uuid(), email: faker.internet.email(), role: false, first_name: 'Luca' , last_name: 'Panzavolta', address: '245 hollow st', country: 'Italy', zip: 523452, phone: 213123 },
