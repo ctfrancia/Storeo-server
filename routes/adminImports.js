@@ -1,16 +1,16 @@
 import postNewCategory from '../Controllers/AdminControllers/postNewCategory';
-import getAllCategories from '../Controllers/UserControllers/getAllCategories';
+import getAllCategories from '../Controllers/SharedControllers/getAllCategories';
 import deleteCategory from '../Controllers/AdminControllers/deleteCategory';
-import getAllProducts from '../Controllers/UserControllers/getAllProducts';
-import getProductById from '../Controllers/UserControllers/getProductById';
+import getAllProducts from '../Controllers/SharedControllers/getAllProducts';
+import getProductById from '../Controllers/SharedControllers/getProductById';
 import deleteProductById from '../Controllers/AdminControllers/deleteProductById';
-import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
+import getProductsByCategoryId from '../Controllers/SharedControllers/getProductByCategoryId';
 import updateCategory from '../Controllers/AdminControllers/updateCategory';
 import postNewProduct from '../Controllers/AdminControllers/postNewProduct';
 import updateProduct from '../Controllers/AdminControllers/updateProduct';
 import getAllOrders from '../Controllers/AdminControllers/getAllOrders';
-import userLogin from '../Controllers/UserControllers/userLogin';
-import userSignup from '../Controllers/UserControllers/userSignup';
+import login from '../Controllers/SharedControllers/login';
+import signup from '../Controllers/SharedControllers/signup';
 
 export default {
   postNewCategory,
@@ -24,6 +24,6 @@ export default {
   postNewProduct,
   updateProduct,
   getAllOrders,
-  userLogin,
-  userSignup,
+  login,
+  signup,
 };

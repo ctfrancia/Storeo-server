@@ -6,10 +6,10 @@ import gateMiddleware from '../Middlewares/gate';
 const router = express.Router();
 
 // Signup
-router.post('/signup', user.userSignup);
+router.post('/signup', user.signup);
 
 // Login
-router.get('/login', user.userLogin);
+router.get('/login', user.login);
 
 //  Products
 router.get('/products', user.getAllProducts);

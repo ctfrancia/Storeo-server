@@ -5,6 +5,10 @@ const gateMiddleware = (req, res, next) => {
   const reqFromAdmin = req.originalUrl.includes('/admin');
   if (reqFromAdmin && user.role === 1) {
     next();
+  } else if (reqFromAdmin && user.role !== 1) {
+    res
+      .status(401)
+      .send('Unauthorized. You are requesting admin resources.');
   } else if (!reqFromAdmin) {
     next();
   } else {

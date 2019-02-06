@@ -28,7 +28,7 @@ const authMiddleware = async (req, res, next) => {
       } catch (err) {
         //  eslint-disable-next-line
         console.log('Error with jwt ', err);
-        next(err, req, res);
+        next(err, req, res, next);
       }
     }
   }

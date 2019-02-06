@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import routes from './routes';
+// import errorHandler from './Middlewares/errorHandler';
 
 const logger = require('morgan');
 const { db } = require('./Schemas');
