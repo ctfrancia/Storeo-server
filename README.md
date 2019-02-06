@@ -48,6 +48,8 @@ As this is a 100% open source project all contributions and pull requests will b
 
 However, until thorough tests have been written and a Continuous Integration  like Jenkins or Travis has been implimented to check pull request builds we won't be able to accept any pull requests at the time. On the other hand, if you feel up to the task of writting tests for this project please get in contact with one of us and we will discuss it with you!
 
+Tests(what little there is) are using mocha, chai, sinon(Mocking Library), Istanbul(Code Coverage),
+
 # Features to add
 
 ◻️Add tests
@@ -57,4 +59,8 @@ However, until thorough tests have been written and a Continuous Integration  li
 ◻️After signing up send verification email
 
 ◻️After creating an account as a user receive an email authentication
+
+◻️when setting up testing environment and within the .env file, when setting environment as: test the correct database and path isn't being selected.
+
+◻️ Add option for users to delete their account
 
