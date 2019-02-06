@@ -1,9 +1,13 @@
 // eslint-disable-next-line
 const errorMiddleware = (err, req, res, next) => {
-  if (err) {
+  if (err.statusCode && err.errorMessage) {
+    res
+      .status(err.statusCode)
+      .send(err.errorMessage);
+  } else {
     res
       .status(500)
-      .end();
+      .end('Internal server error.');
   }
 };
 

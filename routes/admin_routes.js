@@ -16,8 +16,8 @@ router.use(gateMiddleware);
 
 // Products
 router.post('/products', admin.postNewProduct);
-router.get('/products', admin.getAllProducts);
 router.get('/products/:productId', admin.getProductById);
+router.get('/products', admin.getAllProducts);
 router.get('/products/cat/:categoryId', admin.getProductsByCategoryId);
 router.delete('/products/:productId', admin.deleteProductById);
 router.put('/products/:productId', admin.updateProduct);

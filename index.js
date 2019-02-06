@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import routes from './routes';
-// import errorHandler from './Middlewares/errorHandler';
+import errorHandler from './Middlewares/errorHandler';
 
 const logger = require('morgan');
 const { db } = require('./Schemas');
@@ -17,7 +17,8 @@ app
   .use(cors())
   .use(express.json())
   .use(bodyParser.text('text/plain'))
-  .use(routes);
+  .use(routes)
+  .use(errorHandler);
 
 app.listen(PORT, (err) => {
   // eslint-disable-next-line
