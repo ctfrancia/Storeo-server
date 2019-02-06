@@ -9,11 +9,9 @@ function deleteProduct(productId) {
   });
 }
 
-function addProduct(toBeInserted) {
+async function addProduct(toBeInserted) {
   // first query the db to see if the product already exists;
-  const exists = sequelize.query(`SELECT name FROM products WHERE name = "${toBeInserted.name}"`);
-
-  console.log(exists);
+  const exists = await sequelize.query(`SELECT name FROM products WHERE name = "${toBeInserted.name}"`);
 
   // if there is a length then we know that the product with the name already exists
   if (exists[0].length === 1) return true;
