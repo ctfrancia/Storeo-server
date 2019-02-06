@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     units: {
       allowNull: false,
       type: DataTypes.STRING,
+      defaultValue: 0,
     },
     /* eslint-disable */
     'created_at': {

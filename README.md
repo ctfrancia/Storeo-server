@@ -17,7 +17,8 @@ The back end is written in: Node js, Express, using Stripe for payments using a 
 1. `$ npm install` for dependencies
 2. follow the '.envexample' file to create your own '.env' file. More information [here](https://www.npmjs.com/package/dotenv).
 3. type: `$ npm start` to start the back-end in babel. Babel is being used because of 'imports' that are not yet supported by Node.
-4. `npm run populate` will generate mock data in the database. **!! NO FOREIGN LINKS WILL BE ADDED AND MUST BE DONE BY YOU!!**
+4. `npm run populate` will generate mock data in the database. **!! RIGHT NOW THIS DOESN'T WORK PROPERLY AND WILL NEED
+TO BE DONE THROUGH POSTMAN ROUTES TO INSERT DATA. VIEW CONTRIBUTING DOWN BELOW TO SEE ABOUT PULL REQUESTS TO FIX THIS !!**
 
 ****IN YOUR ENV FILE MAKE SURE YOU CONFIGURE IT TO YOUR LOCAL HOST SETTINGS!!****
 
@@ -54,7 +55,7 @@ However, until thorough tests have been written and a Continuous Integration  li
 
 ◻️Add quantity next to product or "In Stock" flag next to product
 
-◻️After signing up send verification email
+◻️After signing up send email verification
 
-◻️After creating an account as a user receive an email authentication
+️️️️◻️When seeding include the foreign keys, right now it fails.
 
