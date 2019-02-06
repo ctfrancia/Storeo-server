@@ -1,6 +1,6 @@
 import retrieveCategoryById from '../../Models/UserModels/retrieveCategoryById';
 
-const getCategoryById = async (req, res) => {
+const getCategoryById = async (req, res, next) => {
   try {
     const { categoryId } = req.params;
     const category = await retrieveCategoryById(categoryId);
@@ -10,9 +10,8 @@ const getCategoryById = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in getCategoryById Controller =>', err);
-    res
-      .status(401)
-      .send('Impossible to retrieve category.');
+    err.errorMessage = 'Impossible to retrieve category.';
+    next(err);
   }
 };
 

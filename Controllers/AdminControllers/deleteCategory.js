@@ -1,6 +1,6 @@
 import sequelize from '../../db';
 
-const deleteCategory = async (req, res) => {
+const deleteCategory = async (req, res, next) => {
   const id = req.params.categoryId;
   try {
     await sequelize.query(
@@ -12,9 +12,8 @@ const deleteCategory = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in deleteCategory Controller =>', err);
-    res
-      .status(401)
-      .send('Impossible to delete category.');
+    err.errorMessage = 'Impossible to delete category.';
+    next(err);
   }
 };
 

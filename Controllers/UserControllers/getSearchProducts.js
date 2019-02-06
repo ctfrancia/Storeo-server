@@ -1,6 +1,6 @@
 import retrieveProductsBySearchQuery from '../../Models/UserModels/retrieveProductsBySearchQuery';
 
-const getSearchProducts = async (req, res) => {
+const getSearchProducts = async (req, res, next) => {
   const { q, category } = req.query;
   if (q === undefined) {
     res
@@ -15,9 +15,8 @@ const getSearchProducts = async (req, res) => {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Error in getSearchProducts Controller', err);
-      res
-        .status(401)
-        .send({ error: 'Search request error.' });
+      err.errorMessage = 'Search request error.';
+      next(err);
     }
   }
 };

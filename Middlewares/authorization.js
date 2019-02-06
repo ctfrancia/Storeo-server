@@ -31,7 +31,7 @@ const authMiddleware = async (req, res, next) => {
       } catch (err) {
         //  eslint-disable-next-line
         //console.log('Error with jwt ', err);
-        err.statusCode = 500;
+        err.statusCode = 401;
         err.errorMessage = 'Invalid token.';
         next(err);
       }

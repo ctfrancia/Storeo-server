@@ -1,6 +1,6 @@
 import productModel from '../../Models/AdminModels/productModel';
 
-const postNewProduct = async (req, res) => {
+const postNewProduct = async (req, res, next) => {
   const toInsert = {
     name: req.body.name,
     description: req.body.description,
@@ -31,10 +31,11 @@ const postNewProduct = async (req, res) => {
       await productModel.addToProductProperties(productProperties, getProductId[0]);
       res.status(201).send('Success.');
     }
-  } catch (e) {
+  } catch (err) {
     /* eslint-disable-next-line */
-    console.log(e);
-    res.status(500).send('Was unable to save correctly, please try again later');
+    console.log('Error in postNewProduct controller =>', err);
+    err.errorMessage = 'Error while creating a new product.';
+    next(err);
   }
 };
 export default postNewProduct;

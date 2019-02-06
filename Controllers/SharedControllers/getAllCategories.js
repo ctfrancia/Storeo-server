@@ -1,6 +1,6 @@
 import retrieveAllCategories from '../../Models/UserModels/retrieveAllCategories';
 
-const getAllCategories = async (req, res) => {
+const getAllCategories = async (req, res, next) => {
   try {
     const categories = await retrieveAllCategories();
     res
@@ -9,9 +9,8 @@ const getAllCategories = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in getAllCategories Controller =>', err);
-    res
-      .status(401)
-      .send('Impossible to retrieve categories.');
+    err.errorMessage = 'Impossible to retrieve categories.';
+    next(err);
   }
 };
 

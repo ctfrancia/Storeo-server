@@ -4,6 +4,10 @@ const errorMiddleware = (err, req, res, next) => {
     res
       .status(err.statusCode)
       .send(err.errorMessage);
+  } else if (!err.statusCode && err.errorMessage) {
+    res
+      .status(500)
+      .send(err.errorMessage);
   } else {
     res
       .status(500)

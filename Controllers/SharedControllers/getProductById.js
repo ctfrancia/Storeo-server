@@ -1,6 +1,6 @@
 import retrieveProductById from '../../Models/UserModels/retrieveProductById';
 
-const getProductById = async (req, res) => {
+const getProductById = async (req, res, next) => {
   try {
     const { productId } = req.params;
     const product = await retrieveProductById(productId);
@@ -10,9 +10,8 @@ const getProductById = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in getProductById Controller =>', err);
-    res
-      .status(401)
-      .send('Impossible to retrieve product.');
+    err.errorMessage = 'Impossible to retrieve product.';
+    next(err);
   }
 };
 

@@ -1,6 +1,6 @@
 import categoryModel from '../../Models/AdminModels/categoryModel';
 
-const updateCategory = async (req, res) => {
+const updateCategory = async (req, res, next) => {
   const id = req.params.categoryId;
   const toChange = req.body;
   try {
@@ -8,12 +8,11 @@ const updateCategory = async (req, res) => {
     res
       .status(202)
       .end('Update successful');
-  } catch (e) {
+  } catch (err) {
     /* eslint-disable-next-line */
-    console.log('Error updating in controller ==>', e);
-    res
-      .status(500)
-      .end('Error updating, please try again');
+    console.log('Error in updateCategory controller =>', err);
+    err.errorMessage = 'Error while updating category.';
+    next(err);
   }
 };
 

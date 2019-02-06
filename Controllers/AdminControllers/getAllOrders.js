@@ -1,6 +1,6 @@
 import retrieveAllOrders from '../../Models/AdminModels/retrieveAllOrders';
 
-const getAllOrders = async (req, res) => {
+const getAllOrders = async (req, res, next) => {
   try {
     const allOrders = await retrieveAllOrders();
     res
@@ -9,9 +9,8 @@ const getAllOrders = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in getAllOrders controller =>', err);
-    res
-      .status(400)
-      .send('Unable to retrieve orders.');
+    err.errorMessage = 'Unable to retrieve orders.';
+    next(err);
   }
 };
 

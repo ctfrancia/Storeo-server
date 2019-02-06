@@ -1,6 +1,6 @@
 import insertNewOrder from '../../Models/AdminModels/insertNewOrder';
 
-const postNewOrder = async (req, res) => {
+const postNewOrder = async (req, res, next) => {
   try {
     const result = await insertNewOrder(req.body);
     res
@@ -9,9 +9,8 @@ const postNewOrder = async (req, res) => {
   } catch (err) {
     // eslint-disable-next-line
     console.error('Error in postNewOrder controller =>', err);
-    res
-      .status(400)
-      .send('Unable to post a new order.');
+    err.errorMessage = 'Unable to post a new order.';
+    next(err);
   }
 };
 
