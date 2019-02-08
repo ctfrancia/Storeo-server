@@ -11,7 +11,7 @@ const stripeCharge = async (req, res) => {
     const { amount, token } = req.body;
 
     const charge = await stripe.charges.create({
-      amount: parseInt(amount, 10),
+      amount: parseInt(amount, 10) * 100,
       currency: 'eur',
       source: token,
     });
