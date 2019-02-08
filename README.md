@@ -1,4 +1,4 @@
-#**Storeo-server**
+#Storeo-server
 
 The first open source e-commerce package with developers in mind to create a customizable online service to sell goods.
 
