@@ -23,14 +23,12 @@ const authMiddleware = async (req, res, next) => {
             },
             type: sequelize.QueryTypes.SELECT,
           });
-        /* if (user.auth_token !== token) {
-          throw new Error('Old token.');
-        } */
+
         req.body.user = user;
         next();
       } catch (err) {
         //  eslint-disable-next-line
-        //console.log('Error with jwt ', err);
+        console.log('Error with jwt ', err);
         err.statusCode = 401;
         err.errorMessage = 'Invalid token.';
         next(err);

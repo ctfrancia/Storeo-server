@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 import sequelize from '../../db';
 import { db } from '../../Schemas';
 import searchProductsQueryBuilder from '../../Helpers/searchProductsQueryBuilder';
-import formatProductsArray from '../../Helpers/formatProductsArray';
+import formatProductProperties from '../../Helpers/formatProductProperties';
 
 const { Product } = db;
 
@@ -18,7 +18,7 @@ const retrieveProductsBySearchQuery = async (q, category) => {
     type: Sequelize.QueryTypes.SELECT,
   });
 
-  const formatted = formatProductsArray(productsArray);
+  const formatted = formatProductProperties(productsArray);
   return formatted;
 };
 

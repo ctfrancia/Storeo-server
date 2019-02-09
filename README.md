@@ -1,10 +1,10 @@
-#**Storeo-server**
+# Storeo server
 
 The first open source e-commerce package with developers in mind to create a customizable online service to sell goods.
 
 The back end is written in: Node js, Express, using Stripe for payments using a RESTful api.
 
-## DataBase Setup
+## Database Setup
 
 1. Make sure that you have a SQL database installed(if mac it's recommended for ease to use brew) [PostgreSQL](https://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/), [MySQL](https://gist.github.com/nrollr/3f57fc15ded7dddddcc4e82fe137b58e), [Cassandra](https://gist.github.com/ssmereka/e41d4ad053a547611ba7ef1dac4cc826), etc. for Linux or Windows, links and instructions will be included in later updates. ** THE DEFAULT IS MYSQL AND WE RECOMMEND MYSQL OR POSTGRESQL**
 2. After installation of SQL database follow respective db guide to start DB. in most cases such as OSX enter the terminal and enter: `$ sudo mysql.server start` or `$ mysql -u <user> -p` . The first option will prompt you to enter your **computer's** password. The second way: `<user>` is the user name of the DB, by default it is `root` and there is no password by default.  For entering make sure that you start the batabase through home brew `$ brew services start postgresql` after you get the success start the server with `$ psql`
