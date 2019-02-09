@@ -1,6 +1,6 @@
 import retrieveOrdersFromUser from '../../Models/UserModels/retrieveOrdersFromUser';
 
-const getOrdersFromUser = async (req, res) => {
+const getOrdersFromUser = async (req, res, next) => {
   try {
     //  get user id from req.body renaming it userId
     const { id: userId } = req.body.user;
@@ -11,9 +11,8 @@ const getOrdersFromUser = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in getOrdersFromUser controller =>', err);
-    res
-      .status(400)
-      .send('Unable to retrieve orders.');
+    err.errorMessage = 'Unable to retrieve orders.';
+    next(err);
   }
 };
 

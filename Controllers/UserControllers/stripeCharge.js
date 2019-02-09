@@ -5,9 +5,9 @@ dotenv.config();
 
 const stripe = Stripe(process.env.SK_STRIPE);
 
-const stripeCharge = async (req, res) => {
+const stripeCharge = async (req, res, next) => {
   try {
-    console.log('body is ', req.body, 'and type is ', typeof req.body);
+    // eslint-disable-next-line
     const { amount, token } = req.body;
 
     const charge = await stripe.charges.create({
@@ -16,17 +16,17 @@ const stripeCharge = async (req, res) => {
       source: token,
     });
 
-    console.log('chage is ', charge);
+    // eslint-disable-next-line
+    console.log('charge is ', charge);
 
     res
       .status(200)
       .send('Payment successful.');
-  } catch (e) {
+  } catch (err) {
     //  eslint-disable-next-line
-    console.error('Error in stripeCharge Controller =>', e);
-    res
-      .status(401)
-      .send('Impossible to process the payment.');
+    console.error('Error in stripeCharge Controller =>', err);
+    err.errorMessage = 'Impossible to process the payment.';
+    next(err);
   }
 };
 

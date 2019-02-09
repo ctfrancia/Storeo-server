@@ -1,6 +1,6 @@
 import insertUserAddress from '../../Models/UserModels/insertUserAddress';
 
-const updateAddress = async (req, res) => {
+const updateAddress = async (req, res, next) => {
   try {
     const [updatedUser] = await insertUserAddress(req.body);
     delete updatedUser.password;
@@ -12,9 +12,8 @@ const updateAddress = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in insertAddress controller =>', err);
-    res
-      .status(400)
-      .send('Unable to update address.');
+    err.errorMessage = 'Unable to update address.';
+    next(err);
   }
 };
 

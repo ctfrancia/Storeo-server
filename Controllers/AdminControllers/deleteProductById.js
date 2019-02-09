@@ -1,6 +1,6 @@
 import productModel from '../../Models/AdminModels/productModel';
 
-const deleteProductById = async (req, res) => {
+const deleteProductById = async (req, res, next) => {
   const { productId } = req.params;
 
   try {
@@ -8,12 +8,11 @@ const deleteProductById = async (req, res) => {
     res
       .status(200)
       .send('Success');
-  } catch (error) {
+  } catch (err) {
     // eslint-disable-next-line
-    console.error('Error in the deleteProducById controller.');
-    res
-      .status(500)
-      .send('Unable to delete the product.');
+    console.error('Error in the deleteProducById controller.', err);
+    err.errorMessage = 'Unable to delete the product.';
+    next(err);
   }
 };
 

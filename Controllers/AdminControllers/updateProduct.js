@@ -1,6 +1,6 @@
 import ProductModel from '../../Models/AdminModels/productModel';
 
-const updateProduct = async (req, res) => {
+const updateProduct = async (req, res, next) => {
   const toInsert = {
     name: req.body.name,
     description: req.body.description,
@@ -27,10 +27,11 @@ const updateProduct = async (req, res) => {
     await ProductModel.updateProductProperties(productProperties, productToUpdate);
 
     res.status(202).send('Update successful');
-  } catch (e) {
+  } catch (err) {
     /* eslint-disable-next-line */
-    console.log(e);
-    res.status(500).send('Something went wrong, sorry!');
+    console.log('Error in updateProduct controller =>', err);
+    err.errorMessage = 'Error while updating a product.';
+    next(err);
   }
 };
 export default updateProduct;

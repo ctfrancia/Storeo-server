@@ -1,6 +1,6 @@
 import retrieveAllProducts from '../../Models/UserModels/retrieveAllProducts';
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = async (req, res, next) => {
   try {
     const products = await retrieveAllProducts();
 
@@ -10,9 +10,8 @@ const getAllProducts = async (req, res) => {
   } catch (err) {
     //  eslint-disable-next-line
     console.error('Error in getAllProducts Controller =>', err);
-    res
-      .status(401)
-      .send('Impossible to retrieve products.');
+    err.errorMessage = 'Impossible to retrieve products.';
+    next(err);
   }
 };
 

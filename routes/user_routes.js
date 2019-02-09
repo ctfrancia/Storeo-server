@@ -1,49 +1,38 @@
 import express from 'express';
-import getAllProducts from '../Controllers/UserControllers/getAllProducts';
-import getProductById from '../Controllers/UserControllers/getProductById';
-import getAllCategories from '../Controllers/UserControllers/getAllCategories';
-import postNewOrder from '../Controllers/UserControllers/postNewOrder';
-import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
-import userSignup from '../Controllers/UserControllers/userSignup';
-import userLogin from '../Controllers/UserControllers/userLogin';
-import updateAddress from '../Controllers/UserControllers/updateAddress';
-import getAOrdersFromUser from '../Controllers/UserControllers/getOrdersFromUser';
-import getSearchProducts from '../Controllers/UserControllers/getSearchProducts';
-import getCategoryById from '../Controllers/UserControllers/getCategoryById';
-import stripeCharge from '../Controllers/UserControllers/stripeCharge';
+import user from './userImports';
 import authMiddleware from '../Middlewares/authorization';
 import gateMiddleware from '../Middlewares/gate';
 
 const router = express.Router();
 
-//  Products
-router.get('/products', getAllProducts);
-router.get('/products/:productId', getProductById);
-router.get('/products/cat/:categoryId', getProductsByCategoryId);
-
-// Categories
-router.get('/categories', getAllCategories);
-router.get('/categories/:categoryId', getCategoryById);
-
-// Orders
-router.post('/orders', authMiddleware, gateMiddleware, postNewOrder);
-
 // Signup
-router.post('/signup', userSignup);
+router.post('/signup', user.signup);
 
 // Login
-router.get('/login', userLogin);
+router.get('/login', user.login);
+
+//  Products
+router.get('/products', user.getAllProducts);
+router.get('/products/:productId', user.getProductById);
+router.get('/products/cat/:categoryId', user.getProductsByCategoryId);
+
+// Categories
+router.get('/categories', user.getAllCategories);
+router.get('/categories/:categoryId', user.getCategoryById);
+
+// Orders
+router.post('/orders', authMiddleware, gateMiddleware, user.postNewOrder);
 
 // Add Address
-router.post('/address', authMiddleware, gateMiddleware, updateAddress);
+router.post('/address', authMiddleware, gateMiddleware, user.updateAddress);
 
 //  Previous Orders
-router.get('/orders', authMiddleware, gateMiddleware, getAOrdersFromUser);
+router.get('/orders', authMiddleware, gateMiddleware, user.getOrdersFromUser);
 
 // Search
-router.get('/search', getSearchProducts);
+router.get('/search', user.getSearchProducts);
 
 // Stripe charge
-router.post('/charge', stripeCharge);
+router.post('/charge', authMiddleware, gateMiddleware, user.stripeCharge);
 
 module.exports = router;

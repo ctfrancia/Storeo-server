@@ -1,5 +1,4 @@
 // here is the centralized file for all the routes for further routing
-// import Passport from '../Authentication/passport';
 
 const express = require('express');
 

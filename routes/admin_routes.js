@@ -1,45 +1,34 @@
 import express from 'express';
-import postNewCategory from '../Controllers/AdminControllers/postNewCategory';
-import getAllCategories from '../Controllers/UserControllers/getAllCategories';
-import deleteCategory from '../Controllers/AdminControllers/deleteCategory';
-import getAllProducts from '../Controllers/UserControllers/getAllProducts';
-import getProductById from '../Controllers/UserControllers/getProductById';
-import deleteProductById from '../Controllers/AdminControllers/deleteProductById';
-import getProductsByCategoryId from '../Controllers/UserControllers/getProductByCategoryId';
-import updateCategory from '../Controllers/AdminControllers/updateCategory';
-import postNewProduct from '../Controllers/AdminControllers/postNewProduct';
-import updateProduct from '../Controllers/AdminControllers/updateProduct';
-import getAllOrders from '../Controllers/AdminControllers/getAllOrders';
-// import authMiddleware from '../Middlewares/authorization';
-// import gateMiddleware from '../Middlewares/gate';
-
-import userLogin from '../Controllers/UserControllers/userLogin';
-import userSignup from '../Controllers/UserControllers/userSignup';
-
+import admin from './adminImports';
+import authMiddleware from '../Middlewares/authorization';
+import gateMiddleware from '../Middlewares/gate';
 
 const router = express.Router();
 
-// Products
-router.post('/products', postNewProduct);
-router.get('/products', getAllProducts);
-router.get('/products/:productId', getProductById);
-router.get('/products/cat/:categoryId', getProductsByCategoryId);
-router.delete('/products/:productId', deleteProductById);
-router.put('/products/:productId', updateProduct);
-
-// Orders
-router.get('/orders', getAllOrders);
-
-// Categories
-router.get('/categories', getAllCategories);
-router.post('/categories', postNewCategory);
-router.put('/categories/:categoryId', updateCategory);
-router.delete('/categories/:categoryId', deleteCategory);
-
 // Login
-router.get('/login', userLogin);
+router.get('/login', admin.login);
 
 // Signup
-router.post('/signup', userSignup);
+router.post('/signup', admin.signup);
+
+router.use(authMiddleware);
+router.use(gateMiddleware);
+
+// Products
+router.post('/products', admin.postNewProduct);
+router.get('/products/:productId', admin.getProductById);
+router.get('/products', admin.getAllProducts);
+router.get('/products/cat/:categoryId', admin.getProductsByCategoryId);
+router.delete('/products/:productId', admin.deleteProductById);
+router.put('/products/:productId', admin.updateProduct);
+
+// Orders
+router.get('/orders', admin.getAllOrders);
+
+// Categories
+router.get('/categories', admin.getAllCategories);
+router.post('/categories', admin.postNewCategory);
+router.put('/categories/:categoryId', admin.updateCategory);
+router.delete('/categories/:categoryId', admin.deleteCategory);
 
 module.exports = router;

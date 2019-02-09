@@ -1,7 +1,6 @@
 import insertNewCategory from '../../Models/AdminModels/insertNewCategory';
 
-
-const postNewCategory = async (req, res) => {
+const postNewCategory = async (req, res, next) => {
   try {
     const answer = await insertNewCategory(req.body);
     if (answer === true) {
@@ -15,10 +14,9 @@ const postNewCategory = async (req, res) => {
     }
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error('Error in postNewCategory controller', err);
-    res
-      .status(400)
-      .send('Impossible to create new category.');
+    console.error('Error in postNewCategory controller =>', err);
+    err.errorMessage = 'Impossible to create new category.';
+    next(err);
   }
 };
 

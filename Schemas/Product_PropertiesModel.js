@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     units: {
       allowNull: true,
       type: DataTypes.STRING,
+      defaultValue: 0,
     },
     property_value: {
       allowNull: true,

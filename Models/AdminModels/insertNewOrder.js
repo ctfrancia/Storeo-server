@@ -10,6 +10,7 @@ import setOrderStatus from '../../Helpers/setOrderStatus';
 
 const insertNewOrder = async (data) => {
   const {
+    total,
     special_instructions: instructions,
     ordered_items: orderedItems,
   } = data;
@@ -20,20 +21,21 @@ const insertNewOrder = async (data) => {
 
   const orderNum = uuidv4();
   const orderStatus = 0;
-  // PENDING TO DEFFINE STATUS CODES AND THE SETTER FUNCTION
+  // PENDING TO DEFINE STATUS CODES AND THE SETTER FUNCTION
 
   const order = await sequelize.query(
     `INSERT INTO orders
-    (order_num, order_status, special_instructions, user_id)
-    VALUES ( :orderNum, :orderStatus, :instructions, :userId)
+    (order_num, order_status, special_instructions, user_id, total)
+    VALUES ( :orderNum, :orderStatus, :instructions, :userId, :total)
     `,
     {
       model: Order,
       replacements: {
         orderNum,
+        orderStatus,
         instructions,
         userId,
-        orderStatus,
+        total,
       },
       type: Sequelize.QueryTypes.INSERT,
     },
