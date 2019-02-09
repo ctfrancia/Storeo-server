@@ -9,12 +9,17 @@ function deleteProduct(productId) {
   });
 }
 
-async function addProduct(toBeInserted) {
+const addProduct = async (toBeInserted) => {
   // first query the db to see if the product already exists;
-  const exists = await sequelize.query(`SELECT name FROM products WHERE name = "${toBeInserted.name}"`);
+
+  const exists = await sequelize.query(
+    `SELECT name FROM products WHERE name = "${toBeInserted.name}"`,
+  );
 
   // if there is a length then we know that the product with the name already exists
   if (exists[0].length === 1) return true;
+  console.log('$$$$', toBeInserted);
+
 
   return sequelize.query(`${QUERIES.insertIntoProducts}`, {
     replacements: {
@@ -29,7 +34,7 @@ async function addProduct(toBeInserted) {
     },
     type: sequelize.QueryTypes.INSERT,
   });
-}
+};
 
 function addToProductProperties(toBeInserted, productId) {
   const productProperties = toBeInserted;

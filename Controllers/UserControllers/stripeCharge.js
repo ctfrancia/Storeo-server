@@ -8,11 +8,10 @@ const stripe = Stripe(process.env.SK_STRIPE);
 const stripeCharge = async (req, res, next) => {
   try {
     // eslint-disable-next-line
-    console.log('body is ', req.body, 'and type is ', typeof req.body);
     const { amount, token } = req.body;
 
     const charge = await stripe.charges.create({
-      amount: parseInt(amount, 10),
+      amount: parseInt(amount, 10) * 100,
       currency: 'eur',
       source: token,
     });
