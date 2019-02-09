@@ -18,8 +18,6 @@ const addProduct = async (toBeInserted) => {
 
   // if there is a length then we know that the product with the name already exists
   if (exists[0].length === 1) return true;
-  console.log('$$$$', toBeInserted);
-
 
   return sequelize.query(`${QUERIES.insertIntoProducts}`, {
     replacements: {
