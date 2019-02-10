@@ -4,12 +4,14 @@
 Storeo is an open-source ecommerce framework that allows developers to effortlessly setup an online store.
 It's built around clear design principles that make it modular, extendible, and easy to get up and running.
 
-## Screenshots
-![logo](Screenshots/logo.png)
-![product detail](Screenshots/product.png)
-![homepage](Screenshots/homepage.png)
-
 ## Tech Stack
+
+### Front-end: [Storeo-FE](https://github.com/zain-ali-syed/Storeo_Frontend)
+* [React](https://facebook.github.io/react-native/)
+* [Redux](https://redux.js.org/)
+* [Materiallize CSS](https://expo.io/)
+
+### Back-end
 
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
@@ -18,6 +20,11 @@ It's built around clear design principles that make it modular, extendible, and 
 * [JSON Web Tokens](https://www.npmjs.com/package/jsonwebtoken)
 * [Faker.js](https://github.com/Marak/faker.js)
 * [Stripe](https://stripe.com/docs)
+
+## Screenshots
+![logo](Screenshots/logo.png)
+![product detail](Screenshots/product.png)
+![homepage](Screenshots/homepage.png)
 
 ## Getting started
 
