@@ -5,7 +5,9 @@ Storeo is an open-source ecommerce framework that allows developers to effortles
 It's built around clear design principles that make it modular, extendible, and easy to get up and running.
 
 ## Screenshots
-![](Screenshots/logo.png)
+![logo](Screenshots/logo.png)
+![product detail](Screenshots/product.png)
+![homepage](Screenshots/homepage.png)
 
 ## Tech Stack
 
@@ -19,8 +21,7 @@ It's built around clear design principles that make it modular, extendible, and 
 
 ## Getting started
 
-1. Make sure that you have a SQL database installed.
-** THE DEFAULT IS MYSQL AND WE RECOMMEND MYSQL OR POSTGRESQL**
+1. Make sure that you have a SQL database installed. (MySQL or PostgreSQL recommended)
 
 2. After installation of SQL database follow respective db guide to start DB. 
 For MySQL type: 
