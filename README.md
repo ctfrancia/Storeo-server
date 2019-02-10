@@ -4,6 +4,9 @@
 Storeo is an open-source ecommerce framework that allows developers to effortlessly setup an online store.
 It's built around clear design principles that make it modular, extendible, and easy to get up and running.
 
+## Screenshots
+![](Screenshots/logo.png)
+
 ## Tech Stack
 
 * [Node.js](https://nodejs.org/en/)
@@ -49,9 +52,13 @@ You should see a command line prompt like the following (for MySQL): `mysql> ` a
 ## More resources 
 Find a diagram of the database structure [here](https://imgur.com/a/6pRzUzW)
 
-# Contributing
+## Contributors
+* Christian Francia - [ctfrancia](https://github.com/ctfrancia)
+* Luca Panzavolta - [LucaPanzavolta](https://github.com/LucaPanzavolta)
+* Uros C - [ross-u](https://github.com/ross-u)
+* Tomasz Gasienica - [Casprovy](https://github.com/Casprovy)
+* Zain Sayed - [zain-ali-syed](https://github.com/zain-ali-syed)
 
-As this is a 100% open source project all contributions and pull requests will be highly welcomed and analyized by [Christian Francia](https://github.com/ctfrancia), [Luca Panzavolta](https://github.com/LucaPanzavolta), [Uros Cirkovic](https://github.com/ross-u), [Zain Ali Syed](https://github.com/zain-ali-syed), [Tomasz Gasienica-Szostak](https://github.com/Casprovy). For anything concering the Front End part of Storeo please visit [here](https://github.com/zain-ali-syed/Storeo_Frontend).
-
+As this is a 100% open source project all contributions and pull requests will be highly welcomed!
 
 
