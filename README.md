@@ -62,7 +62,7 @@ Find a diagram of the database structure [here](https://imgur.com/a/6pRzUzW)
 
 ## Contributors
 * Christian Francia - [ctfrancia](https://github.com/ctfrancia) - [Linkedin](https://www.linkedin.com/in/ctfrancia/)
-* Luca Panzavolta - [LucaPanzavolta](https://github.com/LucaPanzavolta) - [Linkedin](www.linkedin.com/in/lucapanzavolta)
+* Luca Panzavolta - [LucaPanzavolta](https://github.com/LucaPanzavolta) - [Linkedin](https://www.linkedin.com/in/lucapanzavolta)
 * Uros C - [ross-u](https://github.com/ross-u) - [Linkedin](https://www.linkedin.com/in/uros-cirkovic)
 * Tomasz Gasienica - [Casprovy](https://github.com/Casprovy) - [Linkedin](https://www.linkedin.com/in/tomasz-g%C4%85sienica-szostak-cfa-279b175/)
 * Zain Sayed - [zain-ali-syed](https://github.com/zain-ali-syed) - [Linkedin](https://www.linkedin.com/in/zain-syed-7257927/)
