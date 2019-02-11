@@ -62,4 +62,5 @@ typings/
 .next
 
 #etc
-config.js
+ql -u root -p
+
